@@ -1,2 +1,3 @@
-1. `export FLASK_APP=app.py`
-2. `python -m flask run`
+1. cd `server`
+2. `export FLASK_APP=app.py`
+3. `python -m flask run`
