@@ -28,7 +28,7 @@ class PaperList extends React.Component {
 class SearchBar extends React.Component {
     render() {
         return (<form>
-            <input type="text" name="searchterm" className="search-box"/>
+            <input type="text" name="query" className="search-box"/>
             <Button className="search-button">Search</Button>
         </form>);
     }
@@ -38,11 +38,33 @@ class SearchPage extends React.Component {
     constructor(props) {
         super(props);
         const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('myParam');
+        const queryString = urlParams.get('query');
         this.state = {
             papers: [],
+            queryString: queryString
         };
     }
+
+    componentDidMount() {
+        if (this.state.queryString) {
+            var url = "http://127.0.0.1:5000/search?query=" + this.state.queryString
+            fetch(url)
+                .then(res => res.json())
+                .then(
+                (result) => {
+                    this.setState({
+                        papers: result.papers
+                    });
+                    console.log(this.state)
+                },
+                (error) => {
+                    // this.setState({
+                    //     error
+                    // });
+                })
+        }
+    }
+
     render() {
         return (<Container>
             <Row>
