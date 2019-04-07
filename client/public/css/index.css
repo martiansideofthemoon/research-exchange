@@ -3,8 +3,13 @@ body {
 }
 .search-section{
     top: 0;
-    background-color: #a8bdc8;
     padding: 0;
+    border-color: #a8bdc8;
+    border-width: 2px;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
 }
 .logo{
     width: 100px;
@@ -12,14 +17,40 @@ body {
 .search-box{
     width: 40vw;
     height: 39px;
+    border-bottom-style: none;
+    border-top-style: none;
+    border-left-style: solid;
+    border-right-style: none;
     border-color: #a8bdc8;
+    border-width: 2px;
     margin: 0;
 }
 .search-button{
     border-radius: 0;
     margin-top: -5px;
 }
-.paper-list{
+#search-page .paper-list{
     background-color: #d5e2e8;
     padding: 15px;
+}
+#search-page .paper-list ul{
+    list-style-type: none;
+    padding: 0;
+}
+#search-page .paper-list-item{
+    background-color: #b5cad5;
+    border-radius: 0;
+    border-color: #b5cad5;
+    width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+    text-align: left;
+    white-space: normal;
+    color: #434a4f;
+}
+#search-page .paper-list-item h2{
+    font-size: 20px;
+}
+#search-page .paper-list-item p{
+    margin: 0;
 }
