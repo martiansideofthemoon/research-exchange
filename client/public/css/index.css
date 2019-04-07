@@ -4,13 +4,20 @@ body {
 .search-section{
     top: 0;
     background-color: #a8bdc8;
+    padding: 0;
 }
 .logo{
     width: 100px;
 }
 .search-box{
     width: 40vw;
-    height: 35px;
+    height: 39px;
+    border-color: #a8bdc8;
+    margin: 0;
+}
+.search-button{
+    border-radius: 0;
+    margin-top: -5px;
 }
 .paper-list{
     background-color: #d5e2e8;
