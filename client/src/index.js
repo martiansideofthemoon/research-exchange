@@ -9,11 +9,11 @@ class PaperListItem extends React.Component{
     render(){
         console.log(this.props.paper)
         return(
-            <div className="paper-list-item">
+            <Button className="paper-list-item">
                 <h2>{this.props.paper.title}</h2>
                 <p>{this.props.paper.authors}</p>
                 <p>{this.props.paper.publisher + " " + this.props.paper.year}</p>
-            </div>
+            </Button>
         );
     }
 }
@@ -70,7 +70,7 @@ class SearchPage extends React.Component {
     }
 
     render() {
-        return (<Container>
+        return (<Container id="search-page">
             <Row>
                 <Col xm="2"></Col>
                 <Col xs="8">

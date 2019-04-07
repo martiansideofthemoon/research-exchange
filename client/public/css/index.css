@@ -29,7 +29,28 @@ body {
     border-radius: 0;
     margin-top: -5px;
 }
-.paper-list{
+#search-page .paper-list{
     background-color: #d5e2e8;
     padding: 15px;
+}
+#search-page .paper-list ul{
+    list-style-type: none;
+    padding: 0;
+}
+#search-page .paper-list-item{
+    background-color: #b5cad5;
+    border-radius: 0;
+    border-color: #b5cad5;
+    width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+    text-align: left;
+    white-space: normal;
+    color: #434a4f;
+}
+#search-page .paper-list-item h2{
+    font-size: 20px;
+}
+#search-page .paper-list-item p{
+    margin: 0;
 }
