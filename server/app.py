@@ -40,3 +40,15 @@ def search():
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+
+@app.route('/get', methods=['GET'])
+def get():
+    paper_id = int(request.args['id'])
+    for paper in paper_list:
+        if paper['id'] == paper_id:
+            response = flask.jsonify({
+                "paper": paper
+            })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
