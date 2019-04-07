@@ -30,7 +30,7 @@ class PaperList extends React.Component {
 
 class SearchBar extends React.Component {
     render() {
-        return (<div className="search-bar">
+        return (<div className="navbar navbar-search">
             <input type="text" name="searchterm"/>
             <button className="search-button">Search</button>
         </div>);
