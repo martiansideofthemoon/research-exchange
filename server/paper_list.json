@@ -1,0 +1,39 @@
+{
+  "papers": [
+    {
+      "id": 0,
+      "title": "Deep contextualized word representations",
+      "authors": "Matthew E Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark, Kenton Lee, Luke Zettlemoyer",
+      "year": 2018,
+      "publisher": "naacl"
+    },
+    {
+      "id": 1,
+      "title": "Dissecting contextual word embeddings: Architecture and representation",
+      "authors": "Matthew E Peters, Mark Neumann, Luke Zettlemoyer, Wen-tau Yih",
+      "year": 2018,
+      "publisher": "emnlp"
+    },
+    {
+      "id": 2,
+      "title": "Planning, Inference and Pragmatics in Sequential Language Games",
+      "authors": "Fereshte Khani, Noah D. Goodman, Percy Liang",
+      "year": 2018,
+      "publisher": "tacl"
+    },
+    {
+      "id": 3,
+      "title": "Unsupervised Latent Tree Induction with Deep Inside-Outside Recursive Auto-Encoders",
+      "authors": "Andrew Drozdov, Patrick Verga, Mohit Yadav, Mohit Iyyer, Andrew McCallum",
+      "year": 2019,
+      "publisher": "naacl"
+    },
+    {
+      "id": 4,
+      "title": "QuAC: Question Answering in Context",
+      "authors": "Eunsol Choi, He He, Mohit Iyyer, Mark Yatskar, Wen-tau Yih, Yejin Choi, Percy Liang, Luke Zettlemoyer",
+      "year": 2018,
+      "publisher": "emnlp"
+    }
+  ]
+}
