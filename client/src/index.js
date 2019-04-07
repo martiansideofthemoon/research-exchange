@@ -7,11 +7,12 @@ import {Container, Col, Row,
 
 class PaperListItem extends React.Component{
     render(){
+        console.log(this.props.paper)
         return(
             <div className="paper-list-item">
-                <h2>{/* paper title */}</h2>
-                <p>{/* authors */}</p>
-                <p>{/* conference/journal */}</p>
+                <h2>{this.props.paper.title}</h2>
+                <p>{this.props.paper.authors}</p>
+                <p>{this.props.paper.publisher + " " + this.props.paper.year}</p>
             </div>
         );
     }
@@ -19,8 +20,12 @@ class PaperListItem extends React.Component{
 
 class PaperList extends React.Component {
     render() {
+
+        const paper_list = this.props.papers.map(paper => {
+            return <li key={paper.id}><PaperListItem paper={paper}/></li>
+        })
         return (<div className="paper-list">
-            {/* list of <PaperListItem/>*/}
+            <ul>{paper_list}</ul>
         </div>);
     }
 }
@@ -55,7 +60,6 @@ class SearchPage extends React.Component {
                     this.setState({
                         papers: result.papers
                     });
-                    console.log(this.state)
                 },
                 (error) => {
                     // this.setState({
@@ -74,7 +78,9 @@ class SearchPage extends React.Component {
                         <img className="logo" src="images/logo.jpg" alt="logo"/>
                         <SearchBar/>
                     </Navbar>
-                    <PaperList/>
+                    <PaperList
+                        papers={this.state.papers}
+                    />
                 </Col>
                 <Col xm="2"></Col>
             </Row>
