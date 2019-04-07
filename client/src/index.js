@@ -18,12 +18,6 @@ class PaperListItem extends React.Component{
 }
 
 class PaperList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            papers: [],
-        };
-    }
     render() {
         return (<div className="paper-list">
             {/* list of <PaperListItem/>*/}
@@ -41,6 +35,14 @@ class SearchBar extends React.Component {
 }
 
 class SearchPage extends React.Component {
+    constructor(props) {
+        super(props);
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('myParam');
+        this.state = {
+            papers: [],
+        };
+    }
     render() {
         return (<Container>
             <Row>
