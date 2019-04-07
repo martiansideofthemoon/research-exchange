@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Button } from 'reactstrap';
 
 class PaperListItem extends React.Component{
     render(){
@@ -44,6 +44,7 @@ class SearchPage extends React.Component {
                 <img className="logo" src="images/logo.jpg" alt="logo"/>
                 <SearchBar/>
             </div>
+            <Button color="Danger">danger!</Button>
             <PaperList/>
         </div>);
     }
