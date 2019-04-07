@@ -38,11 +38,33 @@ class SearchPage extends React.Component {
     constructor(props) {
         super(props);
         const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('myParam');
+        const queryString = urlParams.get('query');
         this.state = {
             papers: [],
+            queryString: queryString
         };
     }
+
+    componentDidMount() {
+        if (this.state.queryString) {
+            var url = "http://127.0.0.1:5000/search?query=" + this.state.queryString
+            fetch(url)
+                .then(res => res.json())
+                .then(
+                (result) => {
+                    this.setState({
+                        papers: result.papers
+                    });
+                    console.log(this.setState)
+                },
+                (error) => {
+                    // this.setState({
+                    //     error
+                    // });
+                })
+        }
+    }
+
     render() {
         return (<Container>
             <Row>

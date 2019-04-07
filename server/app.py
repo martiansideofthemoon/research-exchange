@@ -1,3 +1,4 @@
+import flask
 from flask import Flask
 from flask import request
 import json
@@ -34,7 +35,8 @@ def search():
 
     retrieved_papers.sort(key=lambda x: x['score'], reverse=True)
 
-    papers_found = {
+    response = flask.jsonify({
         "papers": [x['paper'] for x in retrieved_papers]
-    }
-    return json.dumps(papers_found)
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
