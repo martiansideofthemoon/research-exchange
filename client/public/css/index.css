@@ -1,9 +1,9 @@
 body {
 
 }
-.navbar{
+.search-section{
     top: 0;
-    background-color: #b5cad5;
+    background-color: #a8bdc8;
 }
 .logo{
     width: 100px;
@@ -12,6 +12,7 @@ body {
     width: 40vw;
     height: 35px;
 }
-.search-button{
-
+.paper-list{
+    background-color: #d5e2e8;
+    padding: 15px;
 }

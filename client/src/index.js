@@ -48,7 +48,7 @@ class SearchPage extends React.Component {
             <Row>
                 <Col xm="2"></Col>
                 <Col xs="8">
-                    <Navbar className="navbar">
+                    <Navbar className="search-section">
                         <img className="logo" src="images/logo.jpg" alt="logo"/>
                         <SearchBar/>
                     </Navbar>
