@@ -7,12 +7,15 @@ import {Container, Col, Row,
 
 class PaperListItem extends React.Component{
     render(){
-        console.log(this.props.paper)
         return(
             <div className="paper-list-item">
                 <h2>{this.props.paper.title}</h2>
                 <p>{this.props.paper.authors}</p>
                 <p>{this.props.paper.publisher + " " + this.props.paper.year}</p>
+                <form>
+                    <input type="hidden" name="id" value={this.props.paper.id}/>
+                    <Button color="success" formaction='/document'>View</Button>
+                </form>
             </div>
         );
     }
