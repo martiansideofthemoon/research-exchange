@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'reactstrap';
+import {Container, Col, Row,
+    Navbar,
+    Button
+    } from 'reactstrap';
 
 class PaperListItem extends React.Component{
     render(){
@@ -30,23 +33,28 @@ class PaperList extends React.Component {
 
 class SearchBar extends React.Component {
     render() {
-        return (<div className="navbar navbar-search">
-            <input type="text" name="searchterm"/>
-            <button className="search-button">Search</button>
-        </div>);
+        return (<form>
+            <input type="text" name="searchterm" className="search-box"/>
+            <Button className="search-button">Search</Button>
+        </form>);
     }
 }
 
 class SearchPage extends React.Component {
     render() {
-        return (<div>
-            <div className="navbar">
-                <img className="logo" src="images/logo.jpg" alt="logo"/>
-                <SearchBar/>
-            </div>
-            <Button color="Danger">danger!</Button>
-            <PaperList/>
-        </div>);
+        return (<Container>
+            <Row>
+                <Col xm="2"></Col>
+                <Col xs="8">
+                    <Navbar className="navbar">
+                        <img className="logo" src="images/logo.jpg" alt="logo"/>
+                        <SearchBar/>
+                    </Navbar>
+                    <PaperList/>
+                </Col>
+                <Col xm="2"></Col>
+            </Row>
+        </Container>);
     }
 }
 

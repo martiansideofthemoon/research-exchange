@@ -3,12 +3,14 @@ body {
 }
 .navbar{
     top: 0;
+    background-color: #b5cad5;
 }
 .logo{
-
+    width: 100px;
 }
-.search-bar{
-
+.search-box{
+    width: 40vw;
+    height: 35px;
 }
 .search-button{
 
