@@ -5,6 +5,8 @@ import {Container, Col, Row,
     Button
     } from 'reactstrap';
 
+import SearchBar from './searchbar.js'
+
 class PaperListItem extends React.Component{
     render(){
         return(
@@ -29,15 +31,6 @@ class PaperList extends React.Component {
         return (<div className="paper-list">
             <ul>{paper_list}</ul>
         </div>);
-    }
-}
-
-class SearchBar extends React.Component {
-    render() {
-        return (<form>
-            <input type="text" name="query" className="search-box"/>
-            <Button className="search-button">Search</Button>
-        </form>);
     }
 }
 
