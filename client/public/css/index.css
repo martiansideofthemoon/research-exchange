@@ -34,7 +34,6 @@ body {
 #search-page .paper-list{
     background-color: #d5e2e8;
     padding: 15px;
-    display: none;
 }
 #search-page .paper-list ul{
     list-style-type: none;

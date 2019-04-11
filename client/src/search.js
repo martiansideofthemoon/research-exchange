@@ -12,7 +12,7 @@ class PaperListItem extends React.Component{
         return(
             <form>
             <input type="hidden" name="id" value={this.props.paper.id}/>
-                <Button className="paper-list-item" formaction="/document">
+                <Button className="paper-list-item" formAction="/document">
                     <h2>{this.props.paper.title}</h2>
                     <p>{this.props.paper.authors}</p>
                     <p>{this.props.paper.publisher + " " + this.props.paper.year}</p>
