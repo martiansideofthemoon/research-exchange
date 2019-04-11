@@ -6,32 +6,35 @@ body {
     padding: 0;
     border-color: #a8bdc8;
     border-width: 2px;
-    border-bottom-style: solid;
+    border-bottom-style: none;
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
 }
+
 .logo{
     width: 100px;
 }
 .search-box{
     width: 40vw;
     height: 39px;
-    border-bottom-style: none;
-    border-top-style: none;
+    border-bottom-style: solid;
+    border-top-style: solid;
     border-left-style: solid;
-    border-right-style: none;
+    border-right-style: solid;
     border-color: #a8bdc8;
     border-width: 2px;
     margin: 0;
 }
 .search-button{
     border-radius: 0;
-    margin-top: -5px;
+    float:right;
+    margin-top: 1%;
 }
 #search-page .paper-list{
     background-color: #d5e2e8;
     padding: 15px;
+    display: none;
 }
 #search-page .paper-list ul{
     list-style-type: none;
