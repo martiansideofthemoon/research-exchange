@@ -28,8 +28,7 @@ body {
 }
 .search-button{
     border-radius: 0;
-    float:right;
-    margin-top: 1%;
+    margin-top: -5px;
 }
 #search-page .paper-list{
     background-color: #d5e2e8;
