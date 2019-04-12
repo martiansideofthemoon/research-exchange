@@ -1,6 +1,9 @@
 body {
 
 }
+form {
+  display: inline-block;
+}
 .search-section{
     top: 0;
     padding: 0;
@@ -16,7 +19,7 @@ body {
     width: 100px;
 }
 .search-box{
-    width: 40vw;
+    width: 35vw;
     height: 39px;
     border-bottom-style: solid;
     border-top-style: solid;
@@ -28,7 +31,6 @@ body {
 }
 .search-button{
     border-radius: 0;
-    margin-top: -5px;
 }
 #search-page .paper-list{
     background-color: #d5e2e8;
