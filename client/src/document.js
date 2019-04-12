@@ -10,6 +10,7 @@ import {
     FormGroup,
     Input,
     Label,
+    Card
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
 
@@ -17,11 +18,12 @@ class PaperBasic extends React.Component {
     render() {
         return (<div>
             <Row>
-                <Col xm="9">
+                <Col lg="12">
                     <h1>{/* title */}</h1>
-                </Col>
-                <Col xm="3">
                     <Button>Section Level View</Button>
+                </Col>
+                <Col lg="3">
+                    
                 </Col>
             </Row>
             <p>{/* abstract */}</p>
@@ -123,20 +125,27 @@ class DocumentPage extends React.Component {
     render() {
         return (<Container id="search-page">
             <Row>
-                <Col xm="1"></Col>
-                <Col xs="10">
+                <Col xs="9">
                     <Navbar className="search-section">
                         <img className="logo" src="images/logo.jpg" alt="logo"/>
                         <SearchBar/>
                     </Navbar>
                 </Col>
-                <Col xm="1"></Col>
             </Row>
+            <br></br>
+            <Card style={{width:"75%", height:"100%"}}> 
             <Row>
-                <Col>
-                    <PaperInfo/>
+                <Col xm="11" md={{ size: 10 }}>
+                    The paper descriptions, Abstract and Metadata goes here
+                    Dummy Content Over Here
+                </Col>
+                <Col xm="1" md={{size: 2}}>
+                    <Button color="secondary">Section View</Button>{' '}
                 </Col>
             </Row>
+            </Card>
+            <br></br>
+            <Card style={{width:"75%", height:"100%"}}>
             <Row>
                 <Col>
                     <AnnotationTypes/>
@@ -147,6 +156,7 @@ class DocumentPage extends React.Component {
                     <Annotations/>
                 </Col>
             </Row>
+        </Card>
         </Container>);
     }
 }
