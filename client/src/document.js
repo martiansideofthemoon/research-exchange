@@ -11,7 +11,7 @@ import {
     Input,
     Label,
 } from 'reactstrap';
-import SearchBar from './search.js';
+import SearchBar from './searchbar.js';
 
 class PaperBasic extends React.Component {
     render() {
@@ -129,11 +129,23 @@ class DocumentPage extends React.Component {
                         <img className="logo" src="images/logo.jpg" alt="logo"/>
                         <SearchBar/>
                     </Navbar>
-                    <PaperInfo/>
-                    <AnnotationTypes/>
-                    <Annotations/>
                 </Col>
                 <Col xm="1"></Col>
+            </Row>
+            <Row>
+                <Col>
+                    <PaperInfo/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <AnnotationTypes/>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Annotations/>
+                </Col>
             </Row>
         </Container>);
     }

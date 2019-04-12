@@ -5,12 +5,14 @@ import {Container, Col, Row,
     Button
     } from 'reactstrap';
 
+import SearchBar from './searchbar.js'
+
 class PaperListItem extends React.Component{
     render(){
         return(
             <form>
             <input type="hidden" name="id" value={this.props.paper.id}/>
-                <Button className="paper-list-item" formaction="/document">
+                <Button className="paper-list-item" formAction="/document">
                     <h2>{this.props.paper.title}</h2>
                     <p>{this.props.paper.authors}</p>
                     <p>{this.props.paper.publisher + " " + this.props.paper.year}</p>
@@ -29,15 +31,6 @@ class PaperList extends React.Component {
         return (<div className="paper-list">
             <ul>{paper_list}</ul>
         </div>);
-    }
-}
-
-class SearchBar extends React.Component {
-    render() {
-        return (<form>
-            <input type="text" name="query" className="search-box"/>
-            <Button className="search-button">Search</Button>
-        </form>);
     }
 }
 
