@@ -57,7 +57,7 @@ function IndAnn(props) {
 class Annotations extends React.Component {
     render() {
         const ann_list = this.props.annotations.map(ann => {
-            return <IndAnn ann={ann}/>
+            return <IndAnn ann={ann}  key={ann.id}/>
         })
         return (<div className="annotation-list"><center>{ann_list}</center></div>);
     }
@@ -73,6 +73,7 @@ class DocAnnotations extends React.Component {
                 'supplementary': true
             },
             paper: props.paper,
+            all_annotations: props.paper.annotations,
             active_annotations: props.paper.annotations
         };
     }
@@ -80,8 +81,16 @@ class DocAnnotations extends React.Component {
     toggle(type) {
         var current_types = this.state.types;
         current_types[type] = !current_types[type];
+        var all_annotations = this.state.all_annotations;
+        var active_ann = []
+        for(var ann in all_annotations){
+            if(current_types[all_annotations[ann].type]){
+                active_ann.push(all_annotations[ann]);
+            }
+        }
         this.setState({
-            types: current_types
+            types: current_types,
+            active_annotations: active_ann
         });
     }
 
