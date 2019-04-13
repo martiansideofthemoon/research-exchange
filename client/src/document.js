@@ -45,25 +45,21 @@ class PaperInfo extends React.Component {
     }
 }
 
-class IndAnn extends React.Component {
-    /*the number of votes and whether to show +Answer should be done dynamically*/
-    render() {
-        return (<div>
-            <p>{/*author name*/}</p>
-            <p>{/*content*/}</p>
-            <div className="votes">
-                <Button>+ Answer</Button>
-                <Button>Upvote 10</Button>
-                <Button>Downvote 0</Button>
-            </div>
-        </div>
+function IndAnn(props) {
+    return (
+        <Card className={"individual-annotation " + props.ann.type}>
+            {props.ann.content} <br/>
+            {props.ann.author} <br/>
+        </Card>
     );
-    }
 }
 
 class Annotations extends React.Component {
     render() {
-        return (<div>{/* a group of annotations <IndAnn/> */}</div>);
+        const ann_list = this.props.annotations.map(ann => {
+            return <IndAnn ann={ann}/>
+        })
+        return (<div className="annotation-list"><center>{ann_list}</center></div>);
     }
 }
 
@@ -76,7 +72,8 @@ class DocAnnotations extends React.Component {
                 'questions': true,
                 'supplementary': true
             },
-            paper: null
+            paper: props.paper,
+            active_annotations: props.paper.annotations
         };
     }
 

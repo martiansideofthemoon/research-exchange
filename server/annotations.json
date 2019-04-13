@@ -4,21 +4,40 @@
         "document": [{
             "id": 0,
             "author": "Kalpesh",
-            "type": "Supplement",
-            "content": "good",
+            "type": "supplementary",
+            "content": "This is a great paper!",
+            "upvote": 10,
+            "downvote": 0,
+            "timestamp": 2039482354583490582,
+            "answer": []
+            },
+            {
+            "id": 1,
+            "author": "Kalpesh",
+            "type": "questions",
+            "content": "This is a great paper!",
+            "upvote": 10,
+            "downvote": 0,
+            "timestamp": 2039482354583490582,
+            "answer": []
+            },
+            {
+            "id": 2,
+            "author": "Kalpesh",
+            "type": "comments",
+            "content": "This is a great paper!",
             "upvote": 10,
             "downvote": 0,
             "timestamp": 2039482354583490582,
             "answer": []
             }
-
         ],
         "sectional": [{
             "id": 0,
             "section": "section id",
             "location": "tokenid_tokenid",
             "author": "Kalpesh",
-            "type": "Supplement",
+            "type": "supplementary",
             "content": "good",
             "upvote": 10,
             "downvote": 0,
@@ -26,5 +45,5 @@
             "answer": []
         }]
 
-    } ]
+    }]
 }

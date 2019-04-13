@@ -63,10 +63,13 @@ def get():
     with open('paper_%d.json' % paper_id, 'r') as f:
         paper_abstract = json.loads(f.read())['sections'][0]
         assert paper_abstract['name'] == 'Abstract'
+    # fetch corresponding annotations
+    annotations = ann_list[paper_id]['document']
 
     for paper in paper_list:
         if paper['id'] == paper_id:
             paper['abstract'] = paper_abstract['content']
+            paper['annotations'] = annotations
             response = flask.jsonify({
                 "paper": paper
             })

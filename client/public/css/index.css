@@ -67,3 +67,26 @@
 .supplementary-check-label {
     margin-left: 7px;
 }
+
+.individual-annotation {
+    text-align: left;
+    padding: 5px;
+    width: 98%;
+    height: 100px;
+    margin-top: 5px;
+}
+
+.comments {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.questions {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.supplementary {
+    background-color: #17a2b8;
+    color: #ffffff;
+}
