@@ -17,6 +17,7 @@ def simplify(str1):
     str1 = "".join([x if x.isalnum() else ' ' for x in str1])
     return str1.lower()
 
+
 def refresh_ann(paper_id, ann_type):
     response_list = []
     for annotations in ann_list:
@@ -25,6 +26,7 @@ def refresh_ann(paper_id, ann_type):
                 response_list.append(ann)
     response = flask.jsonify({"annotations": response_list})
     return response
+
 
 @app.route('/search', methods=['GET'])
 def search():

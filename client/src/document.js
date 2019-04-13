@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
+    Badge,
     Container,
     Col,
     Row,
@@ -8,6 +9,7 @@ import {
     Button,
     Form,
     FormGroup,
+    InputGroup,
     Input,
     Label,
     Card
@@ -23,7 +25,7 @@ class PaperInfo extends React.Component {
                     <h5>{this.props.paper.title}</h5>
                     <p>
                         {this.props.paper.authors}<br/>
-                        {this.props.paper.publisher} {this.props.paper.year}
+                        {this.props.paper.publisher}, {this.props.paper.year}
                     </p>
                 </Col>
                 <Col md={{size: 2}}>
@@ -65,49 +67,55 @@ class Annotations extends React.Component {
     }
 }
 
-class AnnotationTypes extends React.Component {
-    render() {
-        return (
-            <Form></Form>
-        //     <Form inline="inline">
-        //     <FormGroup check="check">
-        //         <Label check="check">
-        //             <Input type="checkbox" id="checkbox1"/>{' '}
-        //             Supplementary Materials
-        //         </Label>
-        //     </FormGroup>
-        //     <FormGroup check="check">
-        //         <Label check="check">
-        //             <Input type="checkbox" id="checkbox1"/>{' '}
-        //             Comments
-        //         </Label>
-        //     </FormGroup>
-        //     <FormGroup check="check">
-        //         <Label check="check">
-        //             <Input type="checkbox" id="checkbox1"/>{' '}
-        //             Queries
-        //         </Label>
-        //     </FormGroup>
-        //     <Button>Add Annotations</Button>
-        //     </Form>
-        );
-    }
-}
-
 class DocAnnotations extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            types: {
+                'comments': true,
+                'questions': true,
+                'supplementary': true
+            },
+            paper: null
+        };
+    }
+
+    toggle(type) {
+        var current_types = this.state.types;
+        current_types[type] = !current_types[type];
+        this.setState({
+            types: current_types
+        });
+    }
+
     render() {
         return (
             <Card className="doc-annotations">
+                <Form className="annotation-type-form">
                 <Row>
-                    <Col>
-                        <AnnotationTypes/>
+                    <Col md="1">
+                    </Col>
+                    <Col md="2">
+                        <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
+                        <h4><Badge className="comments-check-label" color="danger">Comments</Badge></h4>
+                    </Col>
+                    <Col md="2">
+                        <Input className="questions-check" type="checkbox" checked={this.state.types.questions} onChange={() => this.toggle('questions')}/>
+                        <h4><Badge className="questions-check-label" color="success">Questions</Badge></h4>
+                    </Col>
+                    <Col md="2">
+                        <Input className="supplementary-check" type="checkbox" checked={this.state.types.supplementary} onChange={() => this.toggle('supplementary')}/>
+                        <h4><Badge className="supplementary-check-label" color="info">Supplementary</Badge></h4>
+                    </Col>
+                    <Col md="2">
+                    </Col>
+                    <Col md="2">
+                        <Button className="add-doc-annotation-button" color="secondary" formAction="/">Add Annotation</Button>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Annotations/>
-                    </Col>
-                </Row>
+                </Form>
+                <hr/>
+                <Annotations annotations={this.state.active_annotations}/>
             </Card>
         );
     }

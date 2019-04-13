@@ -45,3 +45,25 @@
     width: 100%;
     padding: 7px;
 }
+
+.annotation-type-form {
+    padding-top: 10px;
+}
+.questions-check {
+    max-height: 100%;
+}
+.comments-check {
+    max-height: 100%;
+}
+.supplementary-check {
+    max-height: 100%;
+}
+.questions-check-label {
+    margin-left: 7px;
+}
+.comments-check-label {
+    margin-left: 7px;
+}
+.supplementary-check-label {
+    margin-left: 7px;
+}
