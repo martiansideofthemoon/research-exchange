@@ -57,8 +57,14 @@ def search():
 @app.route('/get', methods=['GET'])
 def get():
     paper_id = int(request.args['id'])
+    # Fetch abstract of the paper
+    with open('paper_%d.json' % paper_id, 'r') as f:
+        paper_abstract = json.loads(f.read())['sections'][0]
+        assert paper_abstract['name'] == 'Abstract'
+
     for paper in paper_list:
         if paper['id'] == paper_id:
+            paper['abstract'] = paper_abstract['content']
             response = flask.jsonify({
                 "paper": paper
             })

@@ -14,38 +14,32 @@ import {
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
 
-class PaperBasic extends React.Component {
-    render() {
-        return (<div>
-            <Row>
-                <Col lg="12">
-                    <h1>{/* title */}</h1>
-                    <Button>Section Level View</Button>
-                </Col>
-                <Col lg="3">
-                </Col>
-            </Row>
-            <p>{/* abstract */}</p>
-        </div>);
-    }
-}
-
-class Metadata extends React.Component {
-    render() {
-        return (<p>{/* metadata */}</p>);
-    }
-}
-
 class PaperInfo extends React.Component {
     render() {
-        return (<Row>
-            <Col xm="9">
-                <PaperBasic/>
-            </Col>
-            <Col xm="3">
-                <Metadata/>
-            </Col>
-        </Row>);
+        return (
+            <Card className="paper-metadata">
+            <Row>
+                <Col md={{size: 10}}>
+                    <h5>{this.props.paper.title}</h5>
+                    <p>
+                        {this.props.paper.authors}<br/>
+                        {this.props.paper.publisher} {this.props.paper.year}
+                    </p>
+                </Col>
+                <Col md={{size: 2}}>
+                    <Form>
+                        <input type="hidden" name="id" value={this.props.paper.id}/>
+                        <Button color="secondary" formAction="/sectional">Section View</Button>
+                    </Form>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <p><b>Abstract</b> = {this.props.paper.abstract}</p>
+                </Col>
+            </Row>
+            </Card>
+        );
     }
 }
 
@@ -73,27 +67,49 @@ class Annotations extends React.Component {
 
 class AnnotationTypes extends React.Component {
     render() {
-        return (<Form inline="inline">
-            <FormGroup check="check">
-                <Label check="check">
-                    <Input type="checkbox" id="checkbox1"/>{' '}
-                    Supplementary Materials
-                </Label>
-            </FormGroup>
-            <FormGroup check="check">
-                <Label check="check">
-                    <Input type="checkbox" id="checkbox1"/>{' '}
-                    Comments
-                </Label>
-            </FormGroup>
-            <FormGroup check="check">
-                <Label check="check">
-                    <Input type="checkbox" id="checkbox1"/>{' '}
-                    Queries
-                </Label>
-            </FormGroup>
-            <Button>Add Annotations</Button>
-        </Form>);
+        return (
+            <Form></Form>
+        //     <Form inline="inline">
+        //     <FormGroup check="check">
+        //         <Label check="check">
+        //             <Input type="checkbox" id="checkbox1"/>{' '}
+        //             Supplementary Materials
+        //         </Label>
+        //     </FormGroup>
+        //     <FormGroup check="check">
+        //         <Label check="check">
+        //             <Input type="checkbox" id="checkbox1"/>{' '}
+        //             Comments
+        //         </Label>
+        //     </FormGroup>
+        //     <FormGroup check="check">
+        //         <Label check="check">
+        //             <Input type="checkbox" id="checkbox1"/>{' '}
+        //             Queries
+        //         </Label>
+        //     </FormGroup>
+        //     <Button>Add Annotations</Button>
+        //     </Form>
+        );
+    }
+}
+
+class DocAnnotations extends React.Component {
+    render() {
+        return (
+            <Card className="doc-annotations">
+                <Row>
+                    <Col>
+                        <AnnotationTypes/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Annotations/>
+                    </Col>
+                </Row>
+            </Card>
+        );
     }
 }
 
@@ -114,45 +130,26 @@ class DocumentPage extends React.Component {
             fetch(url).then(res => res.json()).then((result) => {
                 this.setState({paper: result.paper});
             }, (error) => {
-                // this.setState({
-                //     error
-                // });
+                console.log(error)
             })
         }
     }
 
     render() {
+        var paper_loaded = false;
+        if (this.state.paper != null) {
+            paper_loaded = true;
+        }
         return (<Container id="document-page">
             <Row>
-                <Col xs="2">
+                <Col xs="1">
                 </Col>
-                <Col xs="8">
+                <Col xs="10">
                     <SearchBar/>
-                    <Card style={{width:"75%", height:"100%"}}>
-                    <Row>
-                        <Col xm="11" md={{ size: 10 }}>
-                            The paper descriptions, Abstract and Metadata goes here
-                            Dummy Content Over Here
-                        </Col>
-                        <Col xm="1" md={{size: 2}}>
-                            <Button color="secondary">Section View</Button>{' '}
-                        </Col>
-                    </Row>
-                    </Card>
-                    <Card style={{width:"75%", height:"100%"}}>
-                    <Row>
-                        <Col>
-                            <AnnotationTypes/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Annotations/>
-                        </Col>
-                    </Row>
-                    </Card>
+                    {paper_loaded && <PaperInfo paper={this.state.paper}/>}
+                    {paper_loaded && <DocAnnotations paper={this.state.paper}/>}
                 </Col>
-                <Col xs="2">
+                <Col xs="1">
                 </Col>
             </Row>
         </Container>);

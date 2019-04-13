@@ -56,9 +56,7 @@ class SearchPage extends React.Component {
                     });
                 },
                 (error) => {
-                    // this.setState({
-                    //     error
-                    // });
+                    console.log(error)
                 })
         }
     }
@@ -71,12 +69,12 @@ class SearchPage extends React.Component {
         return (
             <Container id="search-page">
                 <Row>
-                    <Col xs="2"></Col>
-                    <Col xs="8">
+                    <Col xs="1"></Col>
+                    <Col xs="10">
                         <SearchBar/>
                         {list_visible && <PaperList papers={this.state.papers}/>}
                     </Col>
-                    <Col xs="2"></Col>
+                    <Col xs="1"></Col>
                 </Row>
             </Container>
         );

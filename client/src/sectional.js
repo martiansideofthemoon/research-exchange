@@ -147,10 +147,7 @@ class SectionalPage extends React.Component {
                     <LeftSide/>
                 </Col>
                 <Col xs="9">
-                    <Navbar className="search-section">
-                        <img className="logo" src="images/logo.jpg" alt="logo"/>
-                        <SearchBar/>
-                    </Navbar>
+                    <SearchBar/>
                 </Col>
                 <Col xm="2">
                     <RightSide/>
