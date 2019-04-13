@@ -24,7 +24,6 @@ class PaperListItem extends React.Component{
 
 class PaperList extends React.Component {
     render() {
-
         const paper_list = this.props.papers.map(paper => {
             return <li key={paper.id}><PaperListItem paper={paper}/></li>
         })
@@ -65,21 +64,22 @@ class SearchPage extends React.Component {
     }
 
     render() {
-        return (<Container id="search-page">
-            <Row>
-                <Col xm="2"></Col>
-                <Col xs="8">
-                    <Navbar className="search-section">
-                        <img className="logo" src="images/logo.jpg" alt="logo"/>
+        var list_visible = false;
+        if (this.state.papers.length > 0) {
+            list_visible = true;
+        }
+        return (
+            <Container id="search-page">
+                <Row>
+                    <Col xs="2"></Col>
+                    <Col xs="8">
                         <SearchBar/>
-                    </Navbar>
-                    <PaperList
-                        papers={this.state.papers}
-                    />
-                </Col>
-                <Col xm="2"></Col>
-            </Row>
-        </Container>);
+                        {list_visible && <PaperList papers={this.state.papers}/>}
+                    </Col>
+                    <Col xs="2"></Col>
+                </Row>
+            </Container>
+        );
     }
 }
 

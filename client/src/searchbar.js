@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {Container, Col, Row,
     Navbar,
     Button,
+    Input,
+    Form,
     InputGroup,
     InputGroupAddon
     } from 'reactstrap';
@@ -10,11 +12,17 @@ import {Container, Col, Row,
 
 class SearchBar extends React.Component {
     render() {
-        return (<form>
-            <input type="text" name="query" className="search-box"/>
-            <Button className="inline" color="secondary" >Search</Button>
-        </form>);
-        
+        return (
+            <Navbar>
+            <Form>
+                <InputGroup>
+                    <img className="logo" src="images/logo.jpg" alt="logo"/>
+                    <Input name="query" className="search-box" placeholder="Search for a paper" />
+                    <Button className="search-button" color="primary" >Search</Button>
+                </InputGroup>
+            </Form>
+            </Navbar>
+        );
     }
 }
 

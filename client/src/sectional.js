@@ -12,7 +12,7 @@ import {
 import SearchBar from './searchbar.js';
 // npm install react-highlightable --save
 // https://github.com/mitchellvanw/react-highlightable
-import Highlightable from 'react-highlightable';
+// import Highlightable from 'react-highlightable';
 // npm install react-lineto --save
 // https://github.com/kdeloach/react-lineto
 import LineTo from 'react-lineto';
@@ -54,7 +54,6 @@ class DisplayOptions extends React.Component{
 class Annotation extends React.Component{
     render() {
         return (<div>
-            <Highlightable className="A">{/*highlighted text*/}</Highlightable>
             <div className="sec-ann B">
                 <p>{/*author name*/}</p>
                 <p>{/*content*/}</p>

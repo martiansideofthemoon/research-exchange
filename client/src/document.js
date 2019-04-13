@@ -23,7 +23,6 @@ class PaperBasic extends React.Component {
                     <Button>Section Level View</Button>
                 </Col>
                 <Col lg="3">
-                    
                 </Col>
             </Row>
             <p>{/* abstract */}</p>
@@ -123,40 +122,39 @@ class DocumentPage extends React.Component {
     }
 
     render() {
-        return (<Container id="search-page">
+        return (<Container id="document-page">
             <Row>
-                <Col xs="9">
-                    <Navbar className="search-section">
-                        <img className="logo" src="images/logo.jpg" alt="logo"/>
-                        <SearchBar/>
-                    </Navbar>
+                <Col xs="2">
+                </Col>
+                <Col xs="8">
+                    <SearchBar/>
+                    <Card style={{width:"75%", height:"100%"}}>
+                    <Row>
+                        <Col xm="11" md={{ size: 10 }}>
+                            The paper descriptions, Abstract and Metadata goes here
+                            Dummy Content Over Here
+                        </Col>
+                        <Col xm="1" md={{size: 2}}>
+                            <Button color="secondary">Section View</Button>{' '}
+                        </Col>
+                    </Row>
+                    </Card>
+                    <Card style={{width:"75%", height:"100%"}}>
+                    <Row>
+                        <Col>
+                            <AnnotationTypes/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Annotations/>
+                        </Col>
+                    </Row>
+                    </Card>
+                </Col>
+                <Col xs="2">
                 </Col>
             </Row>
-            <br></br>
-            <Card style={{width:"75%", height:"100%"}}> 
-            <Row>
-                <Col xm="11" md={{ size: 10 }}>
-                    The paper descriptions, Abstract and Metadata goes here
-                    Dummy Content Over Here
-                </Col>
-                <Col xm="1" md={{size: 2}}>
-                    <Button color="secondary">Section View</Button>{' '}
-                </Col>
-            </Row>
-            </Card>
-            <br></br>
-            <Card style={{width:"75%", height:"100%"}}>
-            <Row>
-                <Col>
-                    <AnnotationTypes/>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Annotations/>
-                </Col>
-            </Row>
-        </Card>
         </Container>);
     }
 }
