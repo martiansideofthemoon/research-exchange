@@ -7,6 +7,8 @@ class AddAnnotations extends React.Component {
         super(props);
         this.state = {
             paperId: props.paperId,
+            sectionId: props.sectionId,
+            location: props.location,
             mode: props.mode,
             annotationType: 'comments',
             textArea: '',
@@ -37,14 +39,20 @@ class AddAnnotations extends React.Component {
             method: 'POST',
             body: JSON.stringify({
                 paper_id: this.state.paperId,
+                section_id: this.state.sectionId,
+                location: this.state.location,
                 mode: this.state.mode,
-                annotationType: this.state.annotationType,
+                annotation_type: this.state.annotationType,
                 content: this.state.textArea,
                 author: this.state.author
             })
         };
         fetch(url, flags).then(res => res.json()).then((result) => {
-            window.location.href = '/document?id=' + this.state.paperId;
+            if (this.state.mode === 'document') {
+                window.location.href = '/document?id=' + this.state.paperId;
+            } else {
+                window.location.href = '/sectional?paper_id=' + this.state.paperId + '&section_id=' + this.state.sectionId;
+            }
         }, (error) => {
             console.log(error);
         })

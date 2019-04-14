@@ -236,14 +236,22 @@ class SectionalPage extends React.Component {
                 return <SectionalIndAnn ann={ann}  key={ann.id} upvote={() => this.upvote(ann.id)} downvote={() => this.downvote(ann.id)}/>
             });
 
-            console.log(ann_list);
-
             annotation_box = this.render_annotation_box(ann_list);
         }
 
         return (
             <div id="sectional-page" className="container-fluid">
-            {paper_loaded && <AddAnnotations paperId={this.state.paper.id} mode="document" addAnnotationOpen={this.state.addAnnotationOpen} closePopup={() => this.closePopup()}/>}
+            {
+                paper_loaded &&
+                <AddAnnotations
+                    paperId={this.state.paper.id}
+                    sectionId={this.state.paper.section.section_id}
+                    location={null}
+                    mode="sectional"
+                    addAnnotationOpen={this.state.addAnnotationOpen}
+                    closePopup={() => this.closePopup()}
+                />
+            }
             <Row>
                 <Col xs="2">
                 </Col>

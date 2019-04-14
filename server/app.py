@@ -185,7 +185,7 @@ def add_annotation():
         "upvotes": 0,
         "author": form_data['author'],
         "answer": [],
-        "type": form_data['annotationType'],
+        "type": form_data['annotation_type'],
         "id": ann_id,
         "downvotes": 0,
         "timestamp": datetime.datetime.now().strftime("%H:%M, %d %B, %Y"),
@@ -194,6 +194,10 @@ def add_annotation():
 
     paper_id = int(form_data['paper_id'])
     mode = form_data['mode']
+
+    if mode == 'sectional':
+        annotation_obj['section_id'] = form_data['section_id']
+        annotation_obj['location'] = form_data['location']
 
     current_annotation = None
     for annotation in ann_list:

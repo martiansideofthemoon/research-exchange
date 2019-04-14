@@ -161,7 +161,14 @@ class DocAnnotations extends React.Component {
                 </Form>
                 <hr/>
                 <div className="annotation-list"><center>{ann_list}</center></div>
-                <AddAnnotations paperId={this.state.paper.id} mode="document" addAnnotationOpen={this.state.addAnnotationOpen} closePopup={() => this.closePopup()}/>
+                <AddAnnotations
+                    paperId={this.state.paper.id}
+                    sectionId={null}
+                    location={null}
+                    mode="document"
+                    addAnnotationOpen={this.state.addAnnotationOpen}
+                    closePopup={() => this.closePopup()}
+                />
             </Card>
         );
     }
