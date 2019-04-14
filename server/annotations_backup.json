@@ -1,0 +1,113 @@
+{
+    "annotations": [
+        {
+            "sectional": [
+                {
+                    "content": "good",
+                    "type": "supplementary",
+                    "timestamp": "14:35 April 13, 2019",
+                    "id": 3,
+                    "upvotes": 1,
+                    "section": "section id",
+                    "answer": [],
+                    "location": "tokenid_tokenid",
+                    "downvotes": 0,
+                    "author": "Kalpesh Krishna"
+                }
+            ],
+            "document": [
+                {
+                    "content": "This is a great paper!",
+                    "type": "supplementary",
+                    "downvotes": 5,
+                    "timestamp": "22:35 April 13, 2019",
+                    "upvotes": 8,
+                    "answer": [],
+                    "id": 0,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "This is a great paper!",
+                    "type": "questions",
+                    "downvotes": 3,
+                    "timestamp": "12:35 April 13, 2019",
+                    "upvotes": 7,
+                    "answer": [],
+                    "id": 1,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "This is a great paper!",
+                    "type": "comments",
+                    "downvotes": 5,
+                    "timestamp": "14:35 April 13, 2019",
+                    "upvotes": 22,
+                    "answer": [],
+                    "id": 2,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/",
+                    "type": "supplementary",
+                    "downvotes": 0,
+                    "timestamp": "00:11, 14 April, 2019",
+                    "upvotes": 17,
+                    "answer": [],
+                    "id": 4,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "What do you mean by 'contextualized'?",
+                    "type": "questions",
+                    "id": 5,
+                    "timestamp": "00:29, 14 April, 2019",
+                    "upvotes": 0,
+                    "answer": [],
+                    "downvotes": 0,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "This paper is quite interesting.",
+                    "type": "comments",
+                    "id": 6,
+                    "timestamp": "00:31, 14 April, 2019",
+                    "upvotes": 0,
+                    "answer": [],
+                    "downvotes": 0,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "content": "This paper is the best!",
+                    "type": "comments",
+                    "timestamp": "00:44, 14 April, 2019",
+                    "id": 7,
+                    "upvotes": 4,
+                    "answer": [],
+                    "downvotes": 0,
+                    "author": "Kalpesh Krishna"
+                }
+            ],
+            "paper_id": 0
+        },
+        {
+            "sectional": [],
+            "document": [],
+            "paper_id": 1
+        },
+        {
+            "sectional": [],
+            "document": [],
+            "paper_id": 2
+        },
+        {
+            "sectional": [],
+            "document": [],
+            "paper_id": 3
+        },
+        {
+            "sectional": [],
+            "document": [],
+            "paper_id": 4
+        }
+    ]
+}
