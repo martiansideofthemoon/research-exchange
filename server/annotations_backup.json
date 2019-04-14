@@ -1,124 +1,134 @@
 {
     "annotations": [
         {
+            "paper_id": 0,
             "sectional": [
                 {
-                    "type": "supplementary",
-                    "id": 3,
+                    "id": 9,
+                    "upvotes": 0,
+                    "downvotes": 0,
+                    "location": "162:208",
+                    "type": "comments",
+                    "timestamp": "15:34, 14 April, 2019",
+                    "author": "Kalpesh Krishna",
                     "section_id": 0,
-                    "content": "good",
-                    "location": "tokenid_tokenid",
-                    "timestamp": "14:35 April 13, 2019",
-                    "upvotes": 1,
-                    "author": "Kalpesh Krishna",
                     "answer": [],
-                    "downvotes": 0
+                    "content": "What kinds of linguistic contexts?"
                 }
             ],
             "document": [
                 {
-                    "type": "supplementary",
                     "id": 0,
-                    "content": "This is a great paper!",
+                    "upvotes": 11,
                     "author": "Kalpesh Krishna",
-                    "timestamp": "22:35 April 13, 2019",
-                    "upvotes": 10,
-                    "answer": [],
-                    "downvotes": 5
-                },
-                {
-                    "type": "questions",
-                    "id": 1,
-                    "content": "This is a great paper!",
-                    "author": "Kalpesh Krishna",
-                    "timestamp": "12:35 April 13, 2019",
-                    "upvotes": 8,
-                    "answer": [],
-                    "downvotes": 3
-                },
-                {
-                    "type": "comments",
-                    "id": 2,
-                    "content": "This is a great paper!",
-                    "author": "Kalpesh Krishna",
-                    "timestamp": "14:35 April 13, 2019",
-                    "upvotes": 22,
-                    "answer": [],
-                    "downvotes": 5
-                },
-                {
                     "type": "supplementary",
-                    "id": 4,
-                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/",
-                    "author": "Kalpesh Krishna",
-                    "timestamp": "00:11, 14 April, 2019",
-                    "upvotes": 17,
+                    "timestamp": "22:35 April 13, 2019",
                     "answer": [],
-                    "downvotes": 0
+                    "downvotes": 5,
+                    "content": "This is a great paper!"
                 },
                 {
+                    "id": 1,
+                    "upvotes": 8,
+                    "author": "Kalpesh Krishna",
                     "type": "questions",
-                    "id": 5,
-                    "content": "What do you mean by 'contextualized'?",
+                    "timestamp": "12:35 April 13, 2019",
+                    "answer": [],
+                    "downvotes": 3,
+                    "content": "This is a great paper!"
+                },
+                {
+                    "id": 2,
+                    "upvotes": 23,
                     "author": "Kalpesh Krishna",
+                    "type": "comments",
+                    "timestamp": "14:35 April 13, 2019",
+                    "answer": [],
+                    "downvotes": 5,
+                    "content": "This is a great paper!"
+                },
+                {
+                    "id": 3,
+                    "upvotes": 17,
+                    "author": "Kalpesh Krishna",
+                    "type": "supplementary",
+                    "timestamp": "00:11, 14 April, 2019",
+                    "answer": [],
+                    "downvotes": 0,
+                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/"
+                },
+                {
+                    "id": 4,
+                    "upvotes": 0,
+                    "author": "Kalpesh Krishna",
+                    "type": "questions",
                     "timestamp": "00:29, 14 April, 2019",
-                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 0
+                    "downvotes": 0,
+                    "content": "What do you mean by 'contextualized'?"
                 },
                 {
-                    "type": "comments",
-                    "id": 6,
-                    "content": "This paper is quite interesting.",
+                    "id": 5,
+                    "upvotes": 0,
                     "author": "Kalpesh Krishna",
+                    "type": "comments",
                     "timestamp": "00:31, 14 April, 2019",
-                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 0
+                    "downvotes": 0,
+                    "content": "This paper is quite interesting."
                 },
                 {
-                    "type": "comments",
-                    "id": 7,
-                    "content": "This paper is the best!",
-                    "author": "Kalpesh Krishna",
-                    "timestamp": "00:44, 14 April, 2019",
+                    "id": 6,
                     "upvotes": 5,
+                    "author": "Kalpesh Krishna",
+                    "type": "comments",
+                    "timestamp": "00:44, 14 April, 2019",
                     "answer": [],
-                    "downvotes": 0
+                    "downvotes": 0,
+                    "content": "This paper is the best!"
+                },
+                {
+                    "id": 8,
+                    "upvotes": 0,
+                    "author": "Kalpesh Krishna",
+                    "type": "comments",
+                    "timestamp": "15:22, 14 April, 2019",
+                    "answer": [],
+                    "downvotes": 0,
+                    "content": "How do you extract span representations from ELMo?"
                 }
-            ],
-            "paper_id": 0
+            ]
         },
         {
+            "paper_id": 1,
             "sectional": [],
-            "document": [],
-            "paper_id": 1
+            "document": []
         },
         {
+            "paper_id": 2,
             "sectional": [],
-            "document": [],
-            "paper_id": 2
+            "document": []
         },
         {
+            "paper_id": 3,
             "sectional": [],
-            "document": [],
-            "paper_id": 3
+            "document": []
         },
         {
+            "paper_id": 4,
             "sectional": [],
             "document": [
                 {
-                    "type": "supplementary",
-                    "id": 8,
-                    "content": "Website = http://quac.ai/",
-                    "author": "Kalpesh Krishna",
-                    "timestamp": "01:06, 14 April, 2019",
+                    "id": 7,
                     "upvotes": 0,
+                    "author": "Kalpesh Krishna",
+                    "type": "supplementary",
+                    "timestamp": "01:06, 14 April, 2019",
                     "answer": [],
-                    "downvotes": 0
+                    "downvotes": 0,
+                    "content": "Website = http://quac.ai/"
                 }
-            ],
-            "paper_id": 4
+            ]
         }
     ]
 }

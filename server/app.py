@@ -196,8 +196,18 @@ def add_annotation():
     mode = form_data['mode']
 
     if mode == 'sectional':
-        annotation_obj['section_id'] = form_data['section_id']
-        annotation_obj['location'] = form_data['location']
+        with open('paper_%d.json' % paper_id, 'r') as f:
+            paper_sections = json.loads(f.read())['sections']
+
+        current_section = None
+        for section in paper_sections:
+            if section['section_id'] == int(form_data['section_id']):
+                current_section = section
+
+        print(current_section)
+        start_index = current_section['content'].index(form_data['highlighted_text'])
+        annotation_obj['section_id'] = int(form_data['section_id'])
+        annotation_obj['location'] = "%d:%d" % (start_index, start_index + len(form_data['highlighted_text']))
 
     current_annotation = None
     for annotation in ann_list:

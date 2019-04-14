@@ -119,6 +119,39 @@ class DocAnnotations extends React.Component {
         });
     }
 
+    // handleType() {
+    //     this.setState({annotationType: document.getElementById('document-selectType').value});
+    // }
+
+    // handleTextArea() {
+    //     this.setState({textArea: document.getElementById('document-textArea').value});
+    // }
+
+    // handleAuthor() {
+    //     this.setState({author: document.getElementById('document-authorText').value});
+    // }
+
+    handleSubmit() {
+        var url = "http://127.0.0.1:5000/add_annotation";
+        var flags = {
+            method: 'POST',
+            body: JSON.stringify({
+                paper_id: this.state.paper.id,
+                section_id: null,
+                highlighted_text: null,
+                mode: "document",
+                annotation_type: document.getElementById('document-selectType').value,
+                content: document.getElementById('document-textArea').value,
+                author: document.getElementById('document-author').value
+            })
+        };
+        fetch(url, flags).then(res => res.json()).then((result) => {
+            window.location.href = '/document?id=' + this.state.paper.id;
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
     render() {
 
         var active_annotations = []
@@ -162,12 +195,13 @@ class DocAnnotations extends React.Component {
                 <hr/>
                 <div className="annotation-list"><center>{ann_list}</center></div>
                 <AddAnnotations
-                    paperId={this.state.paper.id}
-                    sectionId={null}
-                    location={null}
-                    mode="document"
                     addAnnotationOpen={this.state.addAnnotationOpen}
                     closePopup={() => this.closePopup()}
+                    annotationType={this.state.annotationType}
+                    author={this.state.author}
+                    textArea={this.state.textArea}
+                    mode="document"
+                    handleSubmit={() => this.handleSubmit()}
                 />
             </Card>
         );

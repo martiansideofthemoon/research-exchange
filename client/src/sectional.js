@@ -70,7 +70,7 @@ function SectionContent(props) {
         <Card className="section-content">
             <h4>{props.paper.section.section_number + ". " + props.paper.section.name}</h4>
             <hr/>
-            {props.paper.section.content}
+            <div id="sectionText" dangerouslySetInnerHTML={{ __html: props.paper.section.content }} onMouseUp={props.findHighlight} />
         </Card>
     );
 }
@@ -112,7 +112,9 @@ class SectionalPage extends React.Component {
                 'questions': true,
                 'supplementary': true
             },
-            addAnnotationOpen: false
+            addAnnotationOpen: false,
+            isTextHighlighted: false,
+            highlightedText: ''
         };
     }
 
@@ -138,6 +140,27 @@ class SectionalPage extends React.Component {
         });
     }
 
+    handleSubmit() {
+        var url = "http://127.0.0.1:5000/add_annotation";
+        var flags = {
+            method: 'POST',
+            body: JSON.stringify({
+                paper_id: this.state.paperId,
+                section_id: this.state.sectionId,
+                highlighted_text: this.state.highlightedText,
+                mode: "sectional",
+                annotation_type: document.getElementById('sectional-selectType').value,
+                content: document.getElementById('sectional-textArea').value,
+                author: document.getElementById('sectional-authorText').value
+            })
+        };
+        fetch(url, flags).then(res => res.json()).then((result) => {
+            window.location.href = '/sectional?paper_id=' + this.state.paperId + '&section_id=' + this.state.sectionId;
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
     openPopup() {
         this.setState({
             addAnnotationOpen: true
@@ -145,8 +168,12 @@ class SectionalPage extends React.Component {
     }
 
     closePopup() {
+        var highlightedText = window.getSelection().toString();
+        console.log("Text = " + highlightedText)
         this.setState({
-            addAnnotationOpen: false
+            addAnnotationOpen: false,
+            highlightedText: highlightedText,
+            isTextHighlighted: highlightedText.length > 0
         });
     }
 
@@ -205,7 +232,7 @@ class SectionalPage extends React.Component {
                             <h4><Badge className="supplementary-check-label supplementary">Supplementary</Badge></h4>
                         </Col>
                         <Col md="4">
-                            <Button className="add-doc-annotation-button" color="secondary" onClick={() => this.openPopup()}>Add Annotation</Button>
+                            {this.state.isTextHighlighted && <Button className="add-doc-annotation-button" color="secondary" onClick={() => this.openPopup()}>Add Annotation</Button>}
                         </Col>
                     </Row>
                 </Form>
@@ -213,6 +240,16 @@ class SectionalPage extends React.Component {
                 <div className="annotation-list"><center>{ann_list}</center></div>
             </Card>
         );
+    }
+
+    findHighlight() {
+        var highlightedText = window.getSelection().toString();
+        console.log("Text = " + highlightedText)
+        this.setState({
+            highlightedText: highlightedText,
+            isTextHighlighted: highlightedText.length > 0
+        });
+
     }
 
     render() {
@@ -244,12 +281,13 @@ class SectionalPage extends React.Component {
             {
                 paper_loaded &&
                 <AddAnnotations
-                    paperId={this.state.paper.id}
-                    sectionId={this.state.paper.section.section_id}
-                    location={null}
-                    mode="sectional"
                     addAnnotationOpen={this.state.addAnnotationOpen}
                     closePopup={() => this.closePopup()}
+                    annotationType={this.state.annotationType}
+                    author={this.state.author}
+                    textArea={this.state.textArea}
+                    mode="sectional"
+                    handleSubmit={() => this.handleSubmit()}
                 />
             }
             <Row>
@@ -277,7 +315,7 @@ class SectionalPage extends React.Component {
                     {paper_loaded && <SectionList paper={this.state.paper}/>}
                 </Col>
                 <Col xs="6">
-                    {paper_loaded && <SectionContent paper={this.state.paper}/>}
+                    {paper_loaded && <SectionContent paper={this.state.paper} findHighlight={() => this.findHighlight()}/>}
                 </Col>
                 <Col xs="4">
                     {annotation_box}
