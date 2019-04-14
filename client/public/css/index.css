@@ -72,21 +72,24 @@
     text-align: left;
     padding: 5px;
     width: 98%;
-    height: 100px;
+    height: 100%;
     margin-top: 5px;
 }
 
 .comments {
+    border-width: 0px;
     background-color: #dc3545;
     color: #ffffff;
 }
 
 .questions {
+    border-width: 0px;
     background-color: #28a745;
     color: #ffffff;
 }
 
 .supplementary {
+    border-width: 0px;
     background-color: #17a2b8;
     color: #ffffff;
 }

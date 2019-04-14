@@ -16,6 +16,14 @@ import {
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
 
+function compareAnnotations(a1, a2) {
+    if ((a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes) == 0) {
+        return a1.upvotes - a2.upvotes;
+    } else {
+        return (a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes);
+    }
+}
+
 class PaperInfo extends React.Component {
     render() {
         return (
@@ -48,8 +56,31 @@ class PaperInfo extends React.Component {
 function IndAnn(props) {
     return (
         <Card className={"individual-annotation " + props.ann.type}>
-            {props.ann.content} <br/>
-            {props.ann.author} <br/>
+        <Row>
+            <Col>
+                {props.ann.content}
+            </Col>
+        </Row>
+        <hr/>
+        <Row>
+            <Col md={{size: 8}}>
+                <i>{props.ann.author}</i>, {props.ann.timestamp}
+            </Col>
+            <Col md={{size: 2}}>
+            </Col>
+            <Col md={{size: 2}}>
+                <Form>
+                    <Label>{props.ann.upvotes}</Label>
+                    <Button className={props.ann.type}>
+                        <i className="fas fa-thumbs-up"></i>
+                    </Button>
+                    <Label>{props.ann.downvotes}</Label>
+                    <Button className={props.ann.type}>
+                        <i className="fas fa-thumbs-down"></i>
+                    </Button>
+                </Form>
+            </Col>
+        </Row>
         </Card>
     );
 }
@@ -66,6 +97,10 @@ class Annotations extends React.Component {
 class DocAnnotations extends React.Component {
     constructor(props) {
         super(props);
+        var active_annotations = props.paper.annotations.slice()
+        active_annotations.sort(compareAnnotations);
+        active_annotations.reverse()
+
         this.state = {
             types: {
                 'comments': true,
@@ -73,24 +108,27 @@ class DocAnnotations extends React.Component {
                 'supplementary': true
             },
             paper: props.paper,
-            all_annotations: props.paper.annotations,
-            active_annotations: props.paper.annotations
+            active_annotations: active_annotations
         };
     }
 
     toggle(type) {
         var current_types = this.state.types;
         current_types[type] = !current_types[type];
-        var all_annotations = this.state.all_annotations;
-        var active_ann = []
-        for(var ann in all_annotations){
-            if(current_types[all_annotations[ann].type]){
-                active_ann.push(all_annotations[ann]);
+        var all_annotations = this.state.paper.annotations;
+        var active_annotations = []
+        for (var ann in all_annotations) {
+            if(current_types[all_annotations[ann].type]) {
+                active_annotations.push(all_annotations[ann]);
             }
         }
+
+        active_annotations.sort(compareAnnotations)
+        active_annotations.reverse()
+
         this.setState({
             types: current_types,
-            active_annotations: active_ann
+            active_annotations: active_annotations
         });
     }
 
@@ -103,15 +141,15 @@ class DocAnnotations extends React.Component {
                     </Col>
                     <Col md="2">
                         <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
-                        <h4><Badge className="comments-check-label" color="danger">Comments</Badge></h4>
+                        <h4><Badge className="comments-check-label comments">Comments</Badge></h4>
                     </Col>
                     <Col md="2">
                         <Input className="questions-check" type="checkbox" checked={this.state.types.questions} onChange={() => this.toggle('questions')}/>
-                        <h4><Badge className="questions-check-label" color="success">Questions</Badge></h4>
+                        <h4><Badge className="questions-check-label questions">Questions</Badge></h4>
                     </Col>
                     <Col md="2">
                         <Input className="supplementary-check" type="checkbox" checked={this.state.types.supplementary} onChange={() => this.toggle('supplementary')}/>
-                        <h4><Badge className="supplementary-check-label" color="info">Supplementary</Badge></h4>
+                        <h4><Badge className="supplementary-check-label supplementary">Supplementary</Badge></h4>
                     </Col>
                     <Col md="2">
                     </Col>
