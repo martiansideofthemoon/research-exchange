@@ -7,6 +7,8 @@ import {
     Nav, NavItem, NavLink, Navbar,
     Form,
     FormGroup,Input,
+    Card,
+    ListGroup, ListGroupItem,
     Label,Button,
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
@@ -143,15 +145,33 @@ class SectionalPage extends React.Component {
     render() {
         return (<Container id="search-page">
             <Row>
-                <Col xm="1">
-                    <LeftSide/>
-                </Col>
-                <Col xs="9">
+                <Col xs="10">
                     <SearchBar/>
                 </Col>
-                <Col xm="2">
-                    <RightSide/>
+
+            </Row>
+            <Row>
+                <Col xs="2" className="section-wise-link">
+                    <Card> 
+                        <ListGroup>
+                            <ListGroupItem disabled tag="a" href="#">Abstract</ListGroupItem>
+                            <ListGroupItem tag="a" href="#">Introduction</ListGroupItem>
+                            <ListGroupItem tag="a" href="#">Methods</ListGroupItem>
+                            <ListGroupItem tag="a" href="#">Results</ListGroupItem>
+                            <ListGroupItem tag="a" href="#">Conclusions</ListGroupItem>
+                        </ListGroup>
+                    </Card>
                 </Col>
+                <Col xs="8" className="paper">
+                    <Card >
+                        Insert the paper content here
+                    </Card>
+                </Col>  
+                <Col xs="2">
+                    <RightSide/>
+                    <Card> List of Annotations upvoted
+                    </Card>
+                </Col>       
             </Row>
         </Container>);
     }
