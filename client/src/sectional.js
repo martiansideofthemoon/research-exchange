@@ -13,35 +13,6 @@ import SearchBar from './searchbar.js';
 import AddAnnotations from './popup.js';
 import SectionalIndAnn from './section_individual_annotation.js';
 import compareAnnotations from './compare_annotations.js';
-// npm install react-highlightable --save
-// https://github.com/mitchellvanw/react-highlightable
-// import Highlightable from 'react-highlightable';
-// npm install react-lineto --save
-// https://github.com/kdeloach/react-lineto
-import LineTo from 'react-lineto';
-
-
-// class DisplayOptions extends React.Component{
-//     render() {
-//         return (
-//             <Form>
-//                 <FormGroup check="check">
-//                     <Label check="check">
-//                         <Input type="checkbox" id="checkbox1"/>{' '}
-//                         Highlight Only
-//                     </Label>
-//                 </FormGroup>
-//                 <FormGroup check="check">
-//                     <Label check="check">
-//                         <Input type="checkbox" id="checkbox2"/>{' '}
-//                         Show Annotations
-//                     </Label>
-//                 </FormGroup>
-//             </Form>
-//         );
-//     }
-// }
-
 
 function PaperInfo(props) {
     return (
@@ -70,7 +41,11 @@ function SectionContent(props) {
         <Card className="section-content">
             <h4>{props.paper.section.section_number + ". " + props.paper.section.name}</h4>
             <hr/>
-            <div id="sectionText" dangerouslySetInnerHTML={{ __html: props.paper.section.annotated_content }} onMouseUp={props.findHighlight} />
+            <div
+                id="sectionText"
+                dangerouslySetInnerHTML={{ __html: props.final_content}}
+                onMouseUp={props.findHighlight}
+            />
         </Card>
     );
 }
@@ -110,7 +85,8 @@ class SectionalPage extends React.Component {
             types: {
                 'comments': true,
                 'questions': true,
-                'supplementary': true
+                'supplementary': true,
+                'highlights': true
             },
             addAnnotationOpen: false,
             isTextHighlighted: false,
@@ -224,6 +200,8 @@ class SectionalPage extends React.Component {
                         <Col md="1">
                         </Col>
                         <Col md="7">
+                            <Input className="comments-check" type="checkbox" checked={this.state.types.highlights} onChange={() => this.toggle('highlights')}/>
+                            <h4><Badge className="comments-check-label">Highlights</Badge></h4>
                             <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
                             <h4><Badge className="comments-check-label comments">Comments</Badge></h4>
                             <Input className="questions-check" type="checkbox" checked={this.state.types.questions} onChange={() => this.toggle('questions')}/>
@@ -315,7 +293,14 @@ class SectionalPage extends React.Component {
                     {paper_loaded && <SectionList paper={this.state.paper}/>}
                 </Col>
                 <Col xs="6">
-                    {paper_loaded && <SectionContent paper={this.state.paper} findHighlight={() => this.findHighlight()}/>}
+                    {
+                        paper_loaded &&
+                        <SectionContent
+                            paper={this.state.paper}
+                            final_content={this.state.types.highlights ? this.state.paper.section.annotated_content : this.state.paper.section.content}
+                            findHighlight={() => this.findHighlight()}
+                        />
+                    }
                 </Col>
                 <Col xs="4">
                     {annotation_box}

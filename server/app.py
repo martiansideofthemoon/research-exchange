@@ -36,7 +36,7 @@ def add_highlights(original_content, annotations):
         start, end = ann['location'].split(':')
         start, end = int(start), int(end)
         type1 = ann['type']
-        marked_tokens = [x if x[0] < start or x[0] > end or x[1] is not None else (x[0], type1) for x in marked_tokens]
+        marked_tokens = [x if x[0] < start or x[0] >= end or x[1] is not None else (x[0], type1) for x in marked_tokens]
 
     marked_content = ''
     current_markup = None
