@@ -57,8 +57,8 @@ def search():
     return response
 
 
-@app.route('/get', methods=['GET'])
-def get():
+@app.route('/get_document', methods=['GET'])
+def get_document():
     paper_id = int(request.args['id'])
     # Fetch abstract of the paper
     with open('paper_%d.json' % paper_id, 'r') as f:
@@ -75,6 +75,52 @@ def get():
         if paper['id'] == paper_id:
             paper['abstract'] = paper_abstract['content']
             paper['annotations'] = annotations
+            response = flask.jsonify({
+                "paper": paper
+            })
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response
+    response = flask.jsonify({
+        "paper": None
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/get_sectional', methods=['GET'])
+def get_sectional():
+    paper_id = int(request.args['paper_id'])
+    section_id = int(request.args['section_id'])
+    # Fetch abstract of the paper
+    with open('paper_%d.json' % paper_id, 'r') as f:
+        paper_sections = json.loads(f.read())['sections']
+
+    current_section = None
+    for section in paper_sections:
+        if section['section_id'] == section_id:
+            current_section = section
+
+    # fetch corresponding annotations
+    current_annotation = None
+    for annotation in ann_list:
+        if annotation['paper_id'] == paper_id:
+            current_annotation = annotation
+    annotations = current_annotation['sectional']
+
+    all_sections = []
+
+    for section in paper_sections:
+        all_sections.append({
+            'section_number': section['section_number'],
+            'section_id': section['section_id'],
+            'name': section['name'],
+            'number_annotations': sum([1 for x in annotations if x['section_id'] == section['section_id']])
+        })
+
+    for paper in paper_list:
+        if paper['id'] == paper_id:
+            paper['section'] = current_section
+            paper['all_sections'] = all_sections
             response = flask.jsonify({
                 "paper": paper
             })

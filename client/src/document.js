@@ -38,7 +38,8 @@ function PaperInfo(props) {
             </Col>
             <Col md={{size: 2}}>
                 <Form>
-                    <input type="hidden" name="id" value={props.paper.id}/>
+                    <input type="hidden" name="paper_id" value={props.paper.id}/>
+                    <input type="hidden" name="section_id" value="0"/>
                     <Button color="secondary" formAction="/sectional">Section View</Button>
                 </Form>
             </Col>
@@ -223,7 +224,7 @@ class DocumentPage extends React.Component {
 
     componentDidMount() {
         if (this.state.paperId) {
-            var url = "http://127.0.0.1:5000/get?id=" + this.state.paperId
+            var url = "http://127.0.0.1:5000/get_document?id=" + this.state.paperId
             fetch(url).then(res => res.json()).then((result) => {
                 this.setState({paper: result.paper});
             }, (error) => {
