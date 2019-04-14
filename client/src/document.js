@@ -17,7 +17,7 @@ import {
 import SearchBar from './searchbar.js';
 
 function compareAnnotations(a1, a2) {
-    if ((a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes) == 0) {
+    if ((a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes) === 0) {
         return a1.upvotes - a2.upvotes;
     } else {
         return (a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes);
@@ -71,11 +71,11 @@ function IndAnn(props) {
             <Col md={{size: 2}}>
                 <Form>
                     <Label>{props.ann.upvotes}</Label>
-                    <Button className={props.ann.type}>
+                    <Button className={props.ann.type} onClick={props.upvote}>
                         <i className="fas fa-thumbs-up"></i>
                     </Button>
                     <Label>{props.ann.downvotes}</Label>
-                    <Button className={props.ann.type}>
+                    <Button className={props.ann.type} onClick={props.downvote}>
                         <i className="fas fa-thumbs-down"></i>
                     </Button>
                 </Form>
@@ -85,19 +85,19 @@ function IndAnn(props) {
     );
 }
 
-class Annotations extends React.Component {
-    render() {
-        const ann_list = this.props.annotations.map(ann => {
-            return <IndAnn ann={ann}  key={ann.id}/>
-        })
-        return (<div className="annotation-list"><center>{ann_list}</center></div>);
-    }
-}
+// class Annotations extends React.Component {
+//     render() {
+//         const ann_list = this.props.annotations.map(ann => {
+//             return <IndAnn ann={ann}  key={ann.id} upvote={() => this.props.}/>
+//         })
+//         return (<div className="annotation-list"><center>{ann_list}</center></div>);
+//     }
+// }
 
 class DocAnnotations extends React.Component {
     constructor(props) {
         super(props);
-        var active_annotations = props.paper.annotations.slice()
+        var active_annotations = JSON.parse(JSON.stringify(props.paper.annotations));
         active_annotations.sort(compareAnnotations);
         active_annotations.reverse()
 
@@ -115,7 +115,8 @@ class DocAnnotations extends React.Component {
     toggle(type) {
         var current_types = this.state.types;
         current_types[type] = !current_types[type];
-        var all_annotations = this.state.paper.annotations;
+
+        var all_annotations = JSON.parse(JSON.stringify(this.state.paper.annotations));
         var active_annotations = []
         for (var ann in all_annotations) {
             if(current_types[all_annotations[ann].type]) {
@@ -132,7 +133,70 @@ class DocAnnotations extends React.Component {
         });
     }
 
+    upvote(ann_id) {
+        var url = "http://127.0.0.1:5000/upvote?ann_id=" + ann_id;
+        fetch(url).then(res => res.json()).then((result) => {
+            var paper = this.state.paper;
+            var active_annotations = this.state.active_annotations;
+
+            for (var ann in active_annotations) {
+                if(active_annotations[ann].id === ann_id) {
+                    active_annotations[ann].upvotes += 1;
+                    break;
+                }
+            }
+            console.log(active_annotations)
+            console.log(paper.annotations)
+
+            for (var ann in paper.annotations) {
+                if(paper.annotations[ann].id === ann_id) {
+                    paper.annotations[ann].upvotes += 1;
+                    break;
+                }
+            }
+
+            this.setState({
+                paper: paper,
+                active_annotations: active_annotations
+            });
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
+    downvote(ann_id) {
+        var url = "http://127.0.0.1:5000/downvote?ann_id=" + ann_id;
+        fetch(url).then(res => res.json()).then((result) => {
+            var paper = this.state.paper;
+            var active_annotations = this.state.active_annotations;
+
+            for (var ann in active_annotations) {
+                if(active_annotations[ann].id === ann_id) {
+                    active_annotations[ann].downvotes += 1;
+                    break;
+                }
+            }
+
+            for (var ann in paper.annotations) {
+                if(paper.annotations[ann].id === ann_id) {
+                    paper.annotations[ann].downvotes += 1;
+                    break;
+                }
+            }
+
+            this.setState({
+                paper: paper,
+                active_annotations: active_annotations
+            });
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
     render() {
+        const ann_list = this.state.active_annotations.map(ann => {
+            return <IndAnn ann={ann}  key={ann.id} upvote={() => this.upvote(ann.id)} downvote={() => this.downvote(ann.id)}/>
+        })
         return (
             <Card className="doc-annotations">
                 <Form className="annotation-type-form">
@@ -159,7 +223,7 @@ class DocAnnotations extends React.Component {
                 </Row>
                 </Form>
                 <hr/>
-                <Annotations annotations={this.state.active_annotations}/>
+                <div className="annotation-list"><center>{ann_list}</center></div>
             </Card>
         );
     }
