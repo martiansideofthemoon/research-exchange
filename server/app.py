@@ -29,6 +29,30 @@ def refresh_annotations(ann):
         ann_list = json.loads(a.read())['annotations']
 
 
+def add_highlights(original_content, annotations):
+    marked_tokens = [(i, None) for i in range(len(original_content))]
+    annotations.sort(key=lambda x: int(x['location'].split(':')[1]) - int(x['location'].split(':')[0]))
+    for ann in annotations:
+        start, end = ann['location'].split(':')
+        start, end = int(start), int(end)
+        type1 = ann['type']
+        marked_tokens = [x if x[0] < start or x[0] > end or x[1] is not None else (x[0], type1) for x in marked_tokens]
+
+    marked_content = ''
+    current_markup = None
+    for (char, markup) in zip(original_content, marked_tokens):
+        if markup[1] != current_markup:
+            if current_markup is None:
+                marked_content += "<mark class='%s'>" % markup[1]
+            elif current_markup is not None and markup[1] is None:
+                marked_content += "</mark>"
+            else:
+                marked_content += "</mark><mark class='%s'>" % markup[1]
+        marked_content += char
+        current_markup = markup[1]
+    return marked_content
+
+
 @app.route('/search', methods=['GET'])
 def search():
     query_tokens = simplify(request.args['query']).split()
@@ -108,6 +132,10 @@ def get_sectional():
     annotations = current_annotation['sectional']
 
     current_section_annotations = [ann for ann in annotations if ann['section_id'] == section_id]
+    for csa in current_section_annotations:
+        csa['location_text'] = current_section['content'][int(csa['location'].split(':')[0]):int(csa['location'].split(':')[1])]
+
+    current_section['annotated_content'] = add_highlights(current_section['content'], current_section_annotations)
 
     all_sections = []
 
@@ -204,7 +232,6 @@ def add_annotation():
             if section['section_id'] == int(form_data['section_id']):
                 current_section = section
 
-        print(current_section)
         start_index = current_section['content'].index(form_data['highlighted_text'])
         annotation_obj['section_id'] = int(form_data['section_id'])
         annotation_obj['location'] = "%d:%d" % (start_index, start_index + len(form_data['highlighted_text']))

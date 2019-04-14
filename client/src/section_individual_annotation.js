@@ -13,6 +13,12 @@ function SectionalIndAnn(props) {
         <Card className={"individual-annotation " + props.ann.type}>
         <Row>
             <Col>
+                <i>"{props.ann.location_text}"</i>
+            </Col>
+        </Row>
+        <hr/>
+        <Row>
+            <Col>
                 {props.ann.content}
             </Col>
         </Row>

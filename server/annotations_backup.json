@@ -1,134 +1,173 @@
 {
     "annotations": [
         {
-            "paper_id": 0,
-            "sectional": [
+            "document": [
                 {
-                    "id": 9,
-                    "upvotes": 0,
-                    "downvotes": 0,
-                    "location": "162:208",
-                    "type": "comments",
-                    "timestamp": "15:34, 14 April, 2019",
-                    "author": "Kalpesh Krishna",
-                    "section_id": 0,
+                    "downvotes": 5,
+                    "type": "supplementary",
+                    "content": "This is a great paper!",
+                    "timestamp": "22:35 April 13, 2019",
+                    "upvotes": 11,
                     "answer": [],
-                    "content": "What kinds of linguistic contexts?"
+                    "author": "Kalpesh Krishna",
+                    "id": 0
+                },
+                {
+                    "downvotes": 3,
+                    "type": "questions",
+                    "content": "This is a great paper!",
+                    "timestamp": "12:35 April 13, 2019",
+                    "upvotes": 8,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 1
+                },
+                {
+                    "downvotes": 5,
+                    "type": "comments",
+                    "content": "This is a great paper!",
+                    "timestamp": "14:35 April 13, 2019",
+                    "upvotes": 23,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 2
+                },
+                {
+                    "downvotes": 0,
+                    "type": "supplementary",
+                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/",
+                    "timestamp": "00:11, 14 April, 2019",
+                    "upvotes": 17,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 3
+                },
+                {
+                    "downvotes": 0,
+                    "type": "questions",
+                    "content": "What do you mean by 'contextualized'?",
+                    "timestamp": "00:29, 14 April, 2019",
+                    "upvotes": 0,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 4
+                },
+                {
+                    "downvotes": 0,
+                    "type": "comments",
+                    "content": "This paper is quite interesting.",
+                    "timestamp": "00:31, 14 April, 2019",
+                    "upvotes": 0,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 5
+                },
+                {
+                    "downvotes": 0,
+                    "type": "comments",
+                    "content": "This paper is the best!",
+                    "timestamp": "00:44, 14 April, 2019",
+                    "upvotes": 5,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 6
+                },
+                {
+                    "downvotes": 0,
+                    "type": "comments",
+                    "content": "How do you extract span representations from ELMo?",
+                    "timestamp": "15:22, 14 April, 2019",
+                    "upvotes": 0,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "id": 8
                 }
             ],
-            "document": [
+            "sectional": [
                 {
-                    "id": 0,
-                    "upvotes": 11,
-                    "author": "Kalpesh Krishna",
-                    "type": "supplementary",
-                    "timestamp": "22:35 April 13, 2019",
+                    "downvotes": 0,
+                    "type": "comments",
+                    "content": "What kinds of linguistic contexts?",
+                    "timestamp": "15:34, 14 April, 2019",
+                    "location_text": "how these uses vary across linguistic contexts",
+                    "section_id": 0,
+                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 5,
-                    "content": "This is a great paper!"
+                    "location": "162:208",
+                    "author": "Kalpesh Krishna",
+                    "id": 9
                 },
                 {
-                    "id": 1,
-                    "upvotes": 8,
-                    "author": "Kalpesh Krishna",
+                    "downvotes": 0,
                     "type": "questions",
-                    "timestamp": "12:35 April 13, 2019",
+                    "content": "What does semi-supervised signals mean here?",
+                    "timestamp": "16:02, 14 April, 2019",
+                    "location_text": "mix different types of semi-supervision signals",
+                    "section_id": 0,
+                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 3,
-                    "content": "This is a great paper!"
+                    "location": "758:805",
+                    "author": "Kalpesh Krishna",
+                    "id": 10
                 },
                 {
-                    "id": 2,
-                    "upvotes": 23,
-                    "author": "Kalpesh Krishna",
-                    "type": "comments",
-                    "timestamp": "14:35 April 13, 2019",
-                    "answer": [],
-                    "downvotes": 5,
-                    "content": "This is a great paper!"
-                },
-                {
-                    "id": 3,
-                    "upvotes": 17,
-                    "author": "Kalpesh Krishna",
+                    "downvotes": 0,
                     "type": "supplementary",
-                    "timestamp": "00:11, 14 April, 2019",
+                    "content": "This annotation will mess with things :P ",
+                    "timestamp": "16:03, 14 April, 2019",
+                    "location_text": "semantics), and (2) how these",
+                    "section_id": 0,
+                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 0,
-                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/"
+                    "location": "142:171",
+                    "author": "Kalpesh Krishna",
+                    "id": 11
                 },
                 {
-                    "id": 4,
-                    "upvotes": 0,
-                    "author": "Kalpesh Krishna",
+                    "downvotes": 0,
                     "type": "questions",
-                    "timestamp": "00:29, 14 April, 2019",
-                    "answer": [],
-                    "downvotes": 0,
-                    "content": "What do you mean by 'contextualized'?"
-                },
-                {
-                    "id": 5,
+                    "content": "What does bidirectional mean here?",
+                    "id": 12,
+                    "section_id": 0,
                     "upvotes": 0,
-                    "author": "Kalpesh Krishna",
-                    "type": "comments",
-                    "timestamp": "00:31, 14 April, 2019",
                     "answer": [],
-                    "downvotes": 0,
-                    "content": "This paper is quite interesting."
-                },
-                {
-                    "id": 6,
-                    "upvotes": 5,
+                    "location": "302:337",
                     "author": "Kalpesh Krishna",
-                    "type": "comments",
-                    "timestamp": "00:44, 14 April, 2019",
-                    "answer": [],
-                    "downvotes": 0,
-                    "content": "This paper is the best!"
-                },
-                {
-                    "id": 8,
-                    "upvotes": 0,
-                    "author": "Kalpesh Krishna",
-                    "type": "comments",
-                    "timestamp": "15:22, 14 April, 2019",
-                    "answer": [],
-                    "downvotes": 0,
-                    "content": "How do you extract span representations from ELMo?"
+                    "timestamp": "16:08, 14 April, 2019"
                 }
-            ]
+            ],
+            "paper_id": 0
         },
         {
-            "paper_id": 1,
+            "document": [],
             "sectional": [],
-            "document": []
+            "paper_id": 1
         },
         {
-            "paper_id": 2,
+            "document": [],
             "sectional": [],
-            "document": []
+            "paper_id": 2
         },
         {
-            "paper_id": 3,
+            "document": [],
             "sectional": [],
-            "document": []
+            "paper_id": 3
         },
         {
-            "paper_id": 4,
-            "sectional": [],
             "document": [
                 {
-                    "id": 7,
-                    "upvotes": 0,
-                    "author": "Kalpesh Krishna",
+                    "downvotes": 0,
                     "type": "supplementary",
+                    "content": "Website = http://quac.ai/",
                     "timestamp": "01:06, 14 April, 2019",
+                    "upvotes": 0,
                     "answer": [],
-                    "downvotes": 0,
-                    "content": "Website = http://quac.ai/"
+                    "author": "Kalpesh Krishna",
+                    "id": 7
                 }
-            ]
+            ],
+            "sectional": [],
+            "paper_id": 4
         }
     ]
 }

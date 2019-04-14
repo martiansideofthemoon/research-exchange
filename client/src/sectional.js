@@ -70,7 +70,7 @@ function SectionContent(props) {
         <Card className="section-content">
             <h4>{props.paper.section.section_number + ". " + props.paper.section.name}</h4>
             <hr/>
-            <div id="sectionText" dangerouslySetInnerHTML={{ __html: props.paper.section.content }} onMouseUp={props.findHighlight} />
+            <div id="sectionText" dangerouslySetInnerHTML={{ __html: props.paper.section.annotated_content }} onMouseUp={props.findHighlight} />
         </Card>
     );
 }
