@@ -17,7 +17,7 @@
             ],
             "document": [
                 {
-                    "upvotes": 6,
+                    "upvotes": 7,
                     "author": "Kalpesh Krishna",
                     "answer": [],
                     "type": "supplementary",
@@ -37,12 +37,12 @@
                     "content": "This is a great paper!"
                 },
                 {
-                    "upvotes": 16,
+                    "upvotes": 17,
                     "author": "Kalpesh Krishna",
                     "answer": [],
                     "type": "comments",
                     "id": 2,
-                    "downvotes": 3,
+                    "downvotes": 5,
                     "timestamp": "14:35 April 13, 2019",
                     "content": "This is a great paper!"
                 }
