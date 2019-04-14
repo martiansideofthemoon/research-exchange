@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Container, Col, Row,
-    Navbar,
     Button
     } from 'reactstrap';
 

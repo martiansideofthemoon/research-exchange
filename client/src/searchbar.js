@@ -1,12 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Container, Col, Row,
+import {
     Navbar,
     Button,
     Input,
     Form,
     InputGroup,
-    InputGroupAddon
     } from 'reactstrap';
 
 

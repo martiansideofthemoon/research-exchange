@@ -1,29 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
     Badge,
     Container,
     Col,
     Row,
-    Navbar,
     Button,
     Form,
-    FormGroup,
-    InputGroup,
     Input,
-    Label,
     Card
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
-import AddAnnotations from './popup.js'
-
-function compareAnnotations(a1, a2) {
-    if ((a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes) === 0) {
-        return a1.upvotes - a2.upvotes;
-    } else {
-        return (a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes);
-    }
-}
+import AddAnnotations from './popup.js';
+import DocumentIndAnn from './document_individual_annotation.js';
+import compareAnnotations from './compare_annotations.js';
 
 function PaperInfo(props) {
     return (
@@ -47,38 +36,6 @@ function PaperInfo(props) {
         <Row>
             <Col>
                 <p><b>Abstract</b> = {props.paper.abstract}</p>
-            </Col>
-        </Row>
-        </Card>
-    );
-}
-
-function IndAnn(props) {
-    return (
-        <Card className={"individual-annotation " + props.ann.type}>
-        <Row>
-            <Col>
-                {props.ann.content}
-            </Col>
-        </Row>
-        <hr/>
-        <Row>
-            <Col md={{size: 8}}>
-                <i>{props.ann.author}</i>, {props.ann.timestamp}
-            </Col>
-            <Col md={{size: 2}}>
-            </Col>
-            <Col md={{size: 2}}>
-                <Form>
-                    <Label>{props.ann.upvotes}</Label>
-                    <Button className={props.ann.type} onClick={props.upvote}>
-                        <i className="fas fa-thumbs-up"></i>
-                    </Button>
-                    <Label>{props.ann.downvotes}</Label>
-                    <Button className={props.ann.type} onClick={props.downvote}>
-                        <i className="fas fa-thumbs-down"></i>
-                    </Button>
-                </Form>
             </Col>
         </Row>
         </Card>
@@ -157,7 +114,6 @@ class DocAnnotations extends React.Component {
     }
 
     closePopup() {
-        console.log("yolo")
         this.setState({
             addAnnotationOpen: false
         });
@@ -176,7 +132,7 @@ class DocAnnotations extends React.Component {
         active_annotations.reverse()
 
         const ann_list = active_annotations.map(ann => {
-            return <IndAnn ann={ann}  key={ann.id} upvote={() => this.upvote(ann.id)} downvote={() => this.downvote(ann.id)}/>
+            return <DocumentIndAnn ann={ann}  key={ann.id} upvote={() => this.upvote(ann.id)} downvote={() => this.downvote(ann.id)}/>
         })
         return (
             <Card className="doc-annotations">

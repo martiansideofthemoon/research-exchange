@@ -1,17 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {
-    Container,
+    Badge,
     Col,
     Row,
-    Nav, NavItem, NavLink, Navbar,
     Form,
-    FormGroup,Input,
+    Input,
     Card,
     ListGroup, ListGroupItem,
-    Label,Button,
+    Button,
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
+import AddAnnotations from './popup.js';
+import SectionalIndAnn from './section_individual_annotation.js';
+import compareAnnotations from './compare_annotations.js';
 // npm install react-highlightable --save
 // https://github.com/mitchellvanw/react-highlightable
 // import Highlightable from 'react-highlightable';
@@ -20,87 +21,26 @@ import SearchBar from './searchbar.js';
 import LineTo from 'react-lineto';
 
 
-class Sections extends React.Component{
-    render() {
-        return (
-            <NavItem>
-                <NavLink>{/*this.props.sections.name*/}</NavLink>
-            </NavItem>
-        );
-    }
-}
-
-
-class DisplayOptions extends React.Component{
-    render() {
-        return (
-            <Form>
-                <FormGroup check="check">
-                    <Label check="check">
-                        <Input type="checkbox" id="checkbox1"/>{' '}
-                        Highlight Only
-                    </Label>
-                </FormGroup>
-                <FormGroup check="check">
-                    <Label check="check">
-                        <Input type="checkbox" id="checkbox2"/>{' '}
-                        Show Annotations
-                    </Label>
-                </FormGroup>
-            </Form>
-        );
-    }
-}
-
-
-class Annotation extends React.Component{
-    render() {
-        return (<div>
-            <div className="sec-ann B">
-                <p>{/*author name*/}</p>
-                <p>{/*content*/}</p>
-                <div className="votes">
-                    <Button>+ Answer</Button>
-                    <Button>Upvote 10</Button>
-                    <Button>Downvote 0</Button>
-                </div>
-            </div>
-            <LineTo from="A" to="B" />
-      </div>);
-    }
-}
-
-
-class RightSide extends React.Component {
-    render() {
-        return (<div>
-            <Form>
-                <FormGroup check="check">
-                    <Label check="check">
-                        <Input type="checkbox" id="checkbox3"/>{' '}
-                        Supplementary Materials
-                    </Label>
-                </FormGroup>
-                <FormGroup check="check">
-                    <Label check="check">
-                        <Input type="checkbox" id="checkbox4"/>{' '}
-                        Comments
-                    </Label>
-                </FormGroup>
-                <FormGroup check="check">
-                    <Label check="check">
-                        <Input type="checkbox" id="checkbox4"/>{' '}
-                        Queries
-                    </Label>
-                </FormGroup>
-            </Form>
-            <div className="section-annotations">
-                {/*list of <Annotation/>*/}
-            </div>
-            <Button>+ Add Annotation</Button>
-      </div>);
-    }
-}
+// class DisplayOptions extends React.Component{
+//     render() {
+//         return (
+//             <Form>
+//                 <FormGroup check="check">
+//                     <Label check="check">
+//                         <Input type="checkbox" id="checkbox1"/>{' '}
+//                         Highlight Only
+//                     </Label>
+//                 </FormGroup>
+//                 <FormGroup check="check">
+//                     <Label check="check">
+//                         <Input type="checkbox" id="checkbox2"/>{' '}
+//                         Show Annotations
+//                     </Label>
+//                 </FormGroup>
+//             </Form>
+//         );
+//     }
+// }
 
 
 function PaperInfo(props) {
@@ -128,6 +68,8 @@ function PaperInfo(props) {
 function SectionContent(props) {
     return (
         <Card className="section-content">
+            <h4>{props.paper.section.section_number + ". " + props.paper.section.name}</h4>
+            <hr/>
             {props.paper.section.content}
         </Card>
     );
@@ -137,7 +79,8 @@ function SectionContent(props) {
 function SectionList(props) {
     const section_list = props.paper.all_sections.map(sec => {
         return <ListGroupItem
-                    disabled={sec.section_id == props.paper.section.section_id}
+                    key={sec.section_id}
+                    disabled={sec.section_id === props.paper.section.section_id}
                     tag="a"
                     href={"/sectional?paper_id=" + props.paper.id + "&section_id=" + sec.section_id}
                 >
@@ -163,7 +106,13 @@ class SectionalPage extends React.Component {
         this.state = {
             paperId: paperId,
             sectionId: sectionId,
-            paper: null
+            paper: null,
+            types: {
+                'comments': true,
+                'questions': true,
+                'supplementary': true
+            },
+            addAnnotationOpen: false
         };
     }
 
@@ -180,13 +129,121 @@ class SectionalPage extends React.Component {
         }
     }
 
+    toggle(type) {
+        var current_types = this.state.types;
+        current_types[type] = !current_types[type];
+
+        this.setState({
+            types: current_types
+        });
+    }
+
+    openPopup() {
+        this.setState({
+            addAnnotationOpen: true
+        });
+    }
+
+    closePopup() {
+        this.setState({
+            addAnnotationOpen: false
+        });
+    }
+
+    upvote(ann_id) {
+        var url = "http://127.0.0.1:5000/upvote?ann_id=" + ann_id;
+        fetch(url).then(res => res.json()).then((result) => {
+            var paper = this.state.paper;
+
+            for (var ann in paper.annotations) {
+                if(paper.annotations[ann].id === ann_id) {
+                    paper.annotations[ann].upvotes += 1;
+                    break;
+                }
+            }
+
+            this.setState({
+                paper: paper
+            });
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
+    downvote(ann_id) {
+        var url = "http://127.0.0.1:5000/downvote?ann_id=" + ann_id;
+        fetch(url).then(res => res.json()).then((result) => {
+            var paper = this.state.paper;
+
+            for (var ann in paper.annotations) {
+                if(paper.annotations[ann].id === ann_id) {
+                    paper.annotations[ann].downvotes += 1;
+                    break;
+                }
+            }
+            this.setState({
+                paper: paper
+            });
+        }, (error) => {
+            console.log(error);
+        })
+    }
+
+    render_annotation_box(ann_list) {
+        return (
+            <Card className="doc-annotations">
+                <Form className="annotation-type-form">
+                    <Row>
+                        <Col md="1">
+                        </Col>
+                        <Col md="7">
+                            <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
+                            <h4><Badge className="comments-check-label comments">Comments</Badge></h4>
+                            <Input className="questions-check" type="checkbox" checked={this.state.types.questions} onChange={() => this.toggle('questions')}/>
+                            <h4><Badge className="questions-check-label questions">Questions</Badge></h4>
+                            <Input className="supplementary-check" type="checkbox" checked={this.state.types.supplementary} onChange={() => this.toggle('supplementary')}/>
+                            <h4><Badge className="supplementary-check-label supplementary">Supplementary</Badge></h4>
+                        </Col>
+                        <Col md="4">
+                            <Button className="add-doc-annotation-button" color="secondary" onClick={() => this.openPopup()}>Add Annotation</Button>
+                        </Col>
+                    </Row>
+                </Form>
+                <hr/>
+                <div className="annotation-list"><center>{ann_list}</center></div>
+            </Card>
+        );
+    }
+
     render() {
         var paper_loaded = false;
+
+        var annotation_box = <Card></Card>
+
         if (this.state.paper != null) {
             paper_loaded = true;
+            var active_annotations = []
+            for (var ann in this.state.paper.annotations) {
+                if(this.state.types[this.state.paper.annotations[ann].type]) {
+                    active_annotations.push(this.state.paper.annotations[ann]);
+                }
+            }
+
+            active_annotations.sort(compareAnnotations)
+            active_annotations.reverse()
+
+            const ann_list = active_annotations.map(ann => {
+                return <SectionalIndAnn ann={ann}  key={ann.id} upvote={() => this.upvote(ann.id)} downvote={() => this.downvote(ann.id)}/>
+            });
+
+            console.log(ann_list);
+
+            annotation_box = this.render_annotation_box(ann_list);
         }
+
         return (
             <div id="sectional-page" className="container-fluid">
+            {paper_loaded && <AddAnnotations paperId={this.state.paper.id} mode="document" addAnnotationOpen={this.state.addAnnotationOpen} closePopup={() => this.closePopup()}/>}
             <Row>
                 <Col xs="2">
                 </Col>
@@ -215,10 +272,7 @@ class SectionalPage extends React.Component {
                     {paper_loaded && <SectionContent paper={this.state.paper}/>}
                 </Col>
                 <Col xs="4">
-                    <RightSide/>
-                    <Card>
-                        List of Annotations upvoted
-                    </Card>
+                    {annotation_box}
                 </Col>
             </Row>
 

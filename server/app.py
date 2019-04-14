@@ -107,6 +107,8 @@ def get_sectional():
             current_annotation = annotation
     annotations = current_annotation['sectional']
 
+    current_section_annotations = [ann for ann in annotations if ann['section_id'] == section_id]
+
     all_sections = []
 
     for section in paper_sections:
@@ -121,6 +123,7 @@ def get_sectional():
         if paper['id'] == paper_id:
             paper['section'] = current_section
             paper['all_sections'] = all_sections
+            paper['annotations'] = current_section_annotations
             response = flask.jsonify({
                 "paper": paper
             })
