@@ -9,7 +9,7 @@ app = Flask(__name__)
 with open('paper_list.json', 'r') as f:
     paper_list = json.loads(f.read())['papers']
 
-with open('annotations.json', 'r') as a:
+with open('annotations1.json', 'r') as a:
     ann_list = json.loads(a.read())['annotations']
 
 
@@ -23,9 +23,9 @@ def refresh_annotations(ann):
     new_ann = {
         'annotations': ann
     }
-    with open('annotations.json', 'w') as f:
+    with open('annotations1.json', 'w') as f:
         f.write(json.dumps(new_ann, indent=4))
-    with open('annotations.json', 'r') as a:
+    with open('annotations1.json', 'r') as a:
         ann_list = json.loads(a.read())['annotations']
 
 
