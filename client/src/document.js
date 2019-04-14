@@ -15,6 +15,7 @@ import {
     Card
 } from 'reactstrap';
 import SearchBar from './searchbar.js';
+import AddAnnotations from './popup.js'
 
 function compareAnnotations(a1, a2) {
     if ((a1.upvotes - a1.downvotes) - (a2.upvotes - a2.downvotes) === 0) {
@@ -95,6 +96,7 @@ class DocAnnotations extends React.Component {
                 'supplementary': true
             },
             paper: props.paper,
+            addAnnotationOpen: false
         };
     }
 
@@ -147,6 +149,19 @@ class DocAnnotations extends React.Component {
         })
     }
 
+    openPopup() {
+        this.setState({
+            addAnnotationOpen: true
+        });
+    }
+
+    closePopup() {
+        console.log("yolo")
+        this.setState({
+            addAnnotationOpen: false
+        });
+    }
+
     render() {
 
         var active_annotations = []
@@ -183,12 +198,13 @@ class DocAnnotations extends React.Component {
                     <Col md="2">
                     </Col>
                     <Col md="2">
-                        <Button className="add-doc-annotation-button" color="secondary" formAction="/">Add Annotation</Button>
+                        <Button className="add-doc-annotation-button" color="secondary" onClick={() => this.openPopup()}>Add Annotation</Button>
                     </Col>
                 </Row>
                 </Form>
                 <hr/>
                 <div className="annotation-list"><center>{ann_list}</center></div>
+                <AddAnnotations paperId={this.state.paper.id} mode="document" addAnnotationOpen={this.state.addAnnotationOpen} closePopup={() => this.closePopup()}/>
             </Card>
         );
     }

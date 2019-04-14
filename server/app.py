@@ -119,3 +119,44 @@ def downvote():
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
+
+
+@app.route('/add_annotation', methods=['POST'])
+def add_annotation():
+    form_data = json.loads(request.data.decode('utf-8'))
+    ann_id = -1
+    for paper in ann_list:
+        for type1 in ["document", "sectional"]:
+            for annotation in paper[type1]:
+                if annotation['id'] > ann_id:
+                    ann_id = annotation['id']
+    ann_id += 1
+
+    annotation_obj = {
+        "upvotes": 0,
+        "author": form_data['author'],
+        "answer": [],
+        "type": form_data['annotationType'],
+        "id": ann_id,
+        "downvotes": 0,
+        "timestamp": datetime.datetime.now().strftime("%H:%M, %d %B, %Y"),
+        "content": form_data['content']
+    }
+
+    paper_id = int(form_data['paper_id'])
+    mode = form_data['mode']
+
+    current_annotation = None
+    for annotation in ann_list:
+        if annotation['paper_id'] == paper_id:
+            current_annotation = annotation
+            break
+
+    current_annotation[mode].append(annotation_obj)
+
+    refresh_annotations(ann_list)
+    response = flask.jsonify({
+        "success": "success"
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response

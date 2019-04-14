@@ -1,72 +1,102 @@
 {
     "annotations": [
         {
+            "document": [
+                {
+                    "timestamp": "22:35 April 13, 2019",
+                    "id": 0,
+                    "upvotes": 7,
+                    "content": "This is a great paper!",
+                    "downvotes": 5,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "type": "supplementary"
+                },
+                {
+                    "timestamp": "12:35 April 13, 2019",
+                    "id": 1,
+                    "upvotes": 7,
+                    "content": "This is a great paper!",
+                    "downvotes": 3,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "type": "questions"
+                },
+                {
+                    "timestamp": "14:35 April 13, 2019",
+                    "id": 2,
+                    "upvotes": 18,
+                    "content": "This is a great paper!",
+                    "downvotes": 5,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "type": "comments"
+                },
+                {
+                    "timestamp": "00:11, 14 April, 2019",
+                    "id": 4,
+                    "upvotes": 17,
+                    "content": "Amazing blog = http://jalammar.github.io/illustrated-bert/",
+                    "downvotes": 0,
+                    "answer": [],
+                    "author": "Kalpesh Krishna",
+                    "type": "supplementary"
+                },
+                {
+                    "type": "questions",
+                    "id": 5,
+                    "upvotes": 0,
+                    "content": "What do you mean by 'contextualized'?",
+                    "timestamp": "00:29, 14 April, 2019",
+                    "answer": [],
+                    "downvotes": 0,
+                    "author": "Kalpesh Krishna"
+                },
+                {
+                    "type": "comments",
+                    "downvotes": 0,
+                    "timestamp": "00:31, 14 April, 2019",
+                    "upvotes": 0,
+                    "content": "This paper is quite interesting.",
+                    "id": 6,
+                    "answer": [],
+                    "author": "Kalpesh Krishna"
+                }
+            ],
             "sectional": [
                 {
+                    "timestamp": "14:35 April 13, 2019",
                     "upvotes": 1,
-                    "author": "Kalpesh Krishna",
+                    "content": "good",
+                    "id": 3,
                     "answer": [],
                     "location": "tokenid_tokenid",
                     "section": "section id",
                     "type": "supplementary",
-                    "id": 3,
                     "downvotes": 0,
-                    "timestamp": "14:35 April 13, 2019",
-                    "content": "good"
-                }
-            ],
-            "document": [
-                {
-                    "upvotes": 7,
-                    "author": "Kalpesh Krishna",
-                    "answer": [],
-                    "type": "supplementary",
-                    "id": 0,
-                    "downvotes": 5,
-                    "timestamp": "22:35 April 13, 2019",
-                    "content": "This is a great paper!"
-                },
-                {
-                    "upvotes": 5,
-                    "author": "Kalpesh Krishna",
-                    "answer": [],
-                    "type": "questions",
-                    "id": 1,
-                    "downvotes": 3,
-                    "timestamp": "12:35 April 13, 2019",
-                    "content": "This is a great paper!"
-                },
-                {
-                    "upvotes": 17,
-                    "author": "Kalpesh Krishna",
-                    "answer": [],
-                    "type": "comments",
-                    "id": 2,
-                    "downvotes": 5,
-                    "timestamp": "14:35 April 13, 2019",
-                    "content": "This is a great paper!"
+                    "author": "Kalpesh Krishna"
                 }
             ],
             "paper_id": 0
         },
         {
-            "sectional": [],
             "document": [],
+            "sectional": [],
             "paper_id": 1
         },
         {
-            "sectional": [],
             "document": [],
+            "sectional": [],
             "paper_id": 2
         },
         {
-            "sectional": [],
             "document": [],
+            "sectional": [],
             "paper_id": 3
         },
         {
-            "sectional": [],
             "document": [],
+            "sectional": [],
             "paper_id": 4
         }
     ]
