@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Row, Col,
     Navbar,
     Button,
     Input,
@@ -13,11 +14,17 @@ class SearchBar extends React.Component {
         return (
             <Navbar>
             <Form>
-                <InputGroup>
-                    <img className="logo" src="images/logo.jpg" alt="logo"/>
-                    <Input name="query" className="search-box" placeholder="Search for a paper" />
-                    <Button className="search-button" color="primary" formAction="/">Search</Button>
-                </InputGroup>
+                    <Row>
+                        <Col md="3">
+                            <img className="logo" src="images/logo.jpg" alt="logo"/>
+                        </Col>
+                        <Col md="9">
+                            <InputGroup>
+                            <Input name="query" className="search-box" placeholder="Search for a paper" />
+                            <Button className="search-button" color="primary" formAction="/">Search</Button>
+                            </InputGroup>
+                        </Col>
+                    </Row>
             </Form>
             </Navbar>
         );
