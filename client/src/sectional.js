@@ -18,14 +18,14 @@ function PaperInfo(props) {
     return (
         <Card className="paper-metadata">
         <Row>
-            <Col md={{size: 10}}>
+            <Col md={{size: 9}}>
                 <h5>{props.paper.title}</h5>
                 <p>
                     {props.paper.authors}<br/>
                     {props.paper.publisher}, {props.paper.year}
                 </p>
             </Col>
-            <Col md={{size: 2}}>
+            <Col md={{size: 3}}>
                 <Form>
                     <input type="hidden" name="id" value={props.paper.id}/>
                     <Button color="secondary" formAction="/document">Document View</Button>
