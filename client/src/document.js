@@ -142,7 +142,7 @@ class DocAnnotations extends React.Component {
                 mode: "document",
                 annotation_type: document.getElementById('document-selectType').value,
                 content: document.getElementById('document-textArea').value,
-                author: document.getElementById('document-author').value
+                author: document.getElementById('document-authorText').value
             })
         };
         fetch(url, flags).then(res => res.json()).then((result) => {
