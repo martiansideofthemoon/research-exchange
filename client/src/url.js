@@ -1,3 +1,3 @@
-const SERVER_URL = "http://0.0.0.0:5000"
+const SERVER_URL = "http://researchexchange.cs.umass.edu:5000"
 
 export default SERVER_URL;
