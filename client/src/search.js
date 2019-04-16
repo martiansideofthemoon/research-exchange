@@ -3,7 +3,8 @@ import {Container, Col, Row,
     Button
     } from 'reactstrap';
 
-import SearchBar from './searchbar.js'
+import SearchBar from './searchbar.js';
+import SERVER_URL from './url.js';
 
 class PaperListItem extends React.Component{
     render(){
@@ -44,7 +45,7 @@ class SearchPage extends React.Component {
 
     componentDidMount() {
         if (this.state.queryString) {
-            var url = "http://127.0.0.1:5000/search?query=" + this.state.queryString
+            var url = SERVER_URL + "/search?query=" + this.state.queryString
             fetch(url)
                 .then(res => res.json())
                 .then(

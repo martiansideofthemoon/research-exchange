@@ -13,6 +13,7 @@ import SearchBar from './searchbar.js';
 import AddAnnotations from './popup.js';
 import SectionalIndAnn from './section_individual_annotation.js';
 import compareAnnotations from './compare_annotations.js';
+import SERVER_URL from './url.js';
 
 function PaperInfo(props) {
     return (
@@ -96,7 +97,7 @@ class SectionalPage extends React.Component {
 
     componentDidMount() {
         if (this.state.paperId) {
-            var url = "http://127.0.0.1:5000/get_sectional?paper_id=" + this.state.paperId + "&section_id=" + this.state.sectionId;
+            var url = SERVER_URL + "/get_sectional?paper_id=" + this.state.paperId + "&section_id=" + this.state.sectionId;
             fetch(url).then(res => res.json()).then((result) => {
                 this.setState({paper: result.paper});
             }, (error) => {
@@ -117,7 +118,7 @@ class SectionalPage extends React.Component {
     }
 
     handleSubmit() {
-        var url = "http://127.0.0.1:5000/add_annotation";
+        var url = SERVER_URL + "/add_annotation";
         var flags = {
             method: 'POST',
             body: JSON.stringify({
@@ -154,7 +155,7 @@ class SectionalPage extends React.Component {
     }
 
     upvote(ann_id) {
-        var url = "http://127.0.0.1:5000/upvote?ann_id=" + ann_id;
+        var url = SERVER_URL + "/upvote?ann_id=" + ann_id;
         fetch(url).then(res => res.json()).then((result) => {
             var paper = this.state.paper;
 
@@ -174,7 +175,7 @@ class SectionalPage extends React.Component {
     }
 
     downvote(ann_id) {
-        var url = "http://127.0.0.1:5000/downvote?ann_id=" + ann_id;
+        var url = SERVER_URL + "/downvote?ann_id=" + ann_id;
         fetch(url).then(res => res.json()).then((result) => {
             var paper = this.state.paper;
 
