@@ -281,20 +281,11 @@ class SectionalPage extends React.Component {
 
             <Row>
                 <Col xs="2">
+                     {paper_loaded && <SectionList paper={this.state.paper}/>}
                 </Col>
                 <Col xs="6">
                     {paper_loaded && <PaperInfo paper={this.state.paper}/>}
-                </Col>
-                <Col xs="4">
-                </Col>
-            </Row>
-
-            <Row>
-                <Col xs="2">
-                    {paper_loaded && <SectionList paper={this.state.paper}/>}
-                </Col>
-                <Col xs="6">
-                    {
+                                      {
                         paper_loaded &&
                         <SectionContent
                             paper={this.state.paper}
@@ -307,7 +298,6 @@ class SectionalPage extends React.Component {
                     {annotation_box}
                 </Col>
             </Row>
-
         </div>
     );
     }
