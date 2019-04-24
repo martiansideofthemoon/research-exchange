@@ -202,7 +202,7 @@ class SectionalPage extends React.Component {
                         </Col>
                         <Col md="7">
                             <Input className="comments-check" type="checkbox" checked={this.state.types.highlights} onChange={() => this.toggle('highlights')}/>
-                            <h4><Badge className="comments-check-label">Highlights</Badge></h4>
+                            <span className="comments-check-label">Toggle Highlights</span>
                             <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
                             <h4><Badge className="comments-check-label comments">Comments</Badge></h4>
                             <Input className="questions-check" type="checkbox" checked={this.state.types.questions} onChange={() => this.toggle('questions')}/>

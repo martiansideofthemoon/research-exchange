@@ -82,25 +82,28 @@
     border-width: 0px;
     /*background-color: #fbb4ae;*/
     /*background-color: #dc3545;*/
-    background-color: #E7A954;
-    color: #ffffff;
-    /*color: #000000;*/
+    /*background-color: #E7A954;*/
+    background-color: #fdae6b;
+    /*color: #ffffff;*/
+    color: #000000;
 }
 
 .questions {
     border-width: 0px;
     /*background-color: #ccebc5;*/
     /*background-color: #28a745;*/
-     background-color: #A884CC;
-    color: #ffffff;
-    /*color: #000000;*/
+    /*background-color: #A884CC;*/
+    background-color: #a1d99b;
+    /*color: #ffffff;*/
+    color: #000000;
 }
 
 .supplementary {
     border-width: 0px;
     /*background-color: #decbe4;*/
     /*background-color: #17a2b8;*/
-    background-color: #468499;
-    color: #ffffff;
-    /*color: #000000;*/
+    background-color: #bcbddc;
+
+    /*color: #ffffff;*/
+    color: #000000;
 }
