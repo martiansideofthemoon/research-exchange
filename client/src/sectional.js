@@ -201,6 +201,7 @@ class SectionalPage extends React.Component {
                         <Col md="1">
                         </Col>
                         <Col md="7">
+                            <p className="comments-check-label">Highlight some text to add new annotations</p> <br/>
                             <Input className="comments-check" type="checkbox" checked={this.state.types.highlights} onChange={() => this.toggle('highlights')}/>
                             <p className="comments-check-label">Toggle Highlights</p>
                             <Input className="comments-check" type="checkbox" checked={this.state.types.comments} onChange={() => this.toggle('comments')}/>
