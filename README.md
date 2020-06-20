@@ -1,5 +1,7 @@
 ## Research Exchange
 
+This is the website accompanying our [course](https://groups.cs.umass.edu/nmahyar/teaching/advanced-hci-spring-2019) project "Research Exchange - A Collaborative Paper Annotation Tool". You can find the report in our repository as `report.pdf` or [here](http://martiansideofthemoon.github.io/assets/research-exchange.pdf). You can also check out our final presentation's slides in `slides.pdf`.
+
 ### Server Setup
 
 1. Install Python3 with Flask (`pip install Flask`)
